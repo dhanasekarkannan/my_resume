@@ -1,7 +1,10 @@
-import 'package:dhana_resume/screen/sidebar_screen.dart';
-import 'package:flutter/material.dart';
 
-import './screen/home_screen.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:dhana_resume/bloc/sidebar_navigation_bloc.dart';
+
+
+import './screen/sidebar_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -23,8 +26,16 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: <Widget>[HomeScreen(), SidebarScreen()],
+      body: BlocProvider<SidebarNavigationBloc>(
+        create: (context) => SidebarNavigationBloc(),
+        child: Stack(
+          children: <Widget>[
+            BlocBuilder<SidebarNavigationBloc, NavigationStates>(builder: (context, navigationState ){
+              return navigationState as Widget;
+            }),
+            SidebarScreen(),
+          ],
+        ),
       ),
     );
   }

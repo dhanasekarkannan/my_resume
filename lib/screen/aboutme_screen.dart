@@ -1,11 +1,11 @@
+import '../bloc/sidebar_navigation_bloc.dart';
 import 'package:flutter/material.dart';
 
-class AboutMeScreen extends StatelessWidget {
+class AboutMeScreen extends StatelessWidget with NavigationStates{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Expanded(
-        child: Center(
+      body:  Center(
           child: Text(
             "About Me",
             style: TextStyle(
@@ -13,7 +13,7 @@ class AboutMeScreen extends StatelessWidget {
               fontWeight: FontWeight.w800,
             ),
           ),
-        ),
+        
       ),
     );
   }

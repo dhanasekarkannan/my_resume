@@ -1,6 +1,9 @@
 import 'dart:async';
 
+import 'package:dhana_resume/bloc/sidebar_navigation_bloc.dart';
+import 'package:dhana_resume/widget/menu_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rxdart/rxdart.dart';
 
 class SidebarScreen extends StatefulWidget {
@@ -31,7 +34,6 @@ class _SidebarScreenState extends State<SidebarScreen>
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _animationController =
         AnimationController(vsync: this, duration: _animationDuration);
@@ -42,7 +44,6 @@ class _SidebarScreenState extends State<SidebarScreen>
 
   @override
   void dispose() {
-    // TODO: implement dispose
     _animationController.dispose();
     isSidebarOpenedStreamController.close();
     isSidebarOpenedSink.close();
@@ -66,31 +67,75 @@ class _SidebarScreenState extends State<SidebarScreen>
               children: <Widget>[
                 Expanded(
                     child: Container(
-                        color: const Color(0xFF262AAA),
+                        // color: const Color(0xFF262AAA),
+                        color :  Colors.white,
                         child: Column(
                           children: <Widget>[
                             SizedBox(height: 100),
                             ListTile(
                               leading: CircleAvatar(
-                                backgroundColor: Colors.white,
-                                radius: 40,
-                                child: Icon(Icons.perm_identity)
-                                // Image.network(
+                                  backgroundColor: Colors.white,
+                                  radius: 40,
+                                  child: Icon(Icons.perm_identity)
+                                  // Image.network(
                                   // "https://pbs.twimg.com/profile_images/1025219653084172288/IB6sMLR__400x400.jpg",
-                                // ),
-                              ),
+                                  // ),
+                                  ),
                               title: Text(
                                 "Dhana",
                                 style: TextStyle(
                                     fontSize: 30,
                                     fontWeight: FontWeight.w700,
-                                    color: Colors.white),
+                                    color: const Color(0xFF262AAA)),
                               ),
                               subtitle: Text(
                                 "sendmailtodhana@gmail.com",
                                 style: TextStyle(
-                                    fontSize: 20, color: Colors.blueAccent),
+                                    fontSize: 20, color: Colors.blue),
                               ),
+                            ),
+                            Divider(
+                              height: 3,
+                              color: Colors.transparent,
+                            ),
+                            MenuWidget(
+                              title: "Home",
+                              icon: Icons.home,
+                              onTap: (){
+                                onIconPressed();
+                                BlocProvider.of<SidebarNavigationBloc>(context)
+                                    .add(NavigationEvents.HomeClickedEvent);
+                              },
+                            ),
+                            Divider(
+                              height: 3,
+                              indent: 20,
+                              endIndent: 20,
+                              color: Colors.blue.withOpacity(0.5),
+                            ),
+                            MenuWidget(
+                              title: "About Me",
+                              icon: Icons.perm_contact_calendar,
+                              onTap: (){
+                                onIconPressed();
+                                BlocProvider.of<SidebarNavigationBloc>(context)
+                                    .add(NavigationEvents.AboutMeClickedEvent);
+                              },
+                            ),
+                            Divider(
+                              height: 3,
+                              indent: 20,
+                              endIndent: 20,
+                              color: Colors.blue.withOpacity(0.5),
+                            ),
+                            MenuWidget(
+                              title: "Work",
+                              icon: Icons.laptop_windows,
+                              onTap: (){
+                                onIconPressed();
+                                BlocProvider.of<SidebarNavigationBloc>(context)
+                                    .add(NavigationEvents.WorkClickedEvent);
+                              },
                             ),
                           ],
                         ))),
@@ -101,14 +146,14 @@ class _SidebarScreenState extends State<SidebarScreen>
                       onIconPressed();
                     },
                     child: ClipPath(
-                        clipper: CustomMenuClipper(),
-                                          child: Container(
+                      clipper: CustomMenuClipper(),
+                      child: Container(
                           alignment: Alignment.centerLeft,
                           width: 35,
                           height: 100,
-                          color: const Color(0xFF262AAA),
+                          color: Colors.white ,
                           child: AnimatedIcon(
-                              color: Colors.blueAccent,
+                              color: const Color(0xFF262AAA),
                               icon: AnimatedIcons.menu_arrow,
                               progress: _animationController.view)),
                     ),
