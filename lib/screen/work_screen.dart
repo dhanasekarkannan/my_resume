@@ -1,5 +1,6 @@
-import '../bloc/sidebar_navigation_bloc.dart';
 import 'package:flutter/material.dart';
+
+import '../bloc/sidebar_navigation_bloc.dart';
 
 class WorkScreen extends StatefulWidget with NavigationStates {
   @override

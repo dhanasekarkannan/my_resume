@@ -3,13 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../screen/home_screen.dart';
 import '../screen/aboutme_screen.dart';
 import '../screen/work_screen.dart';
-
+import '../screen/contact_screen.dart';
 
 
 enum NavigationEvents{
   HomeClickedEvent,
   AboutMeClickedEvent,
-  ContactsClickedEvent,
+  ContactClickedEvent,
   PassionClickedEvent,
   SkillsClickedEvent,
   WorkClickedEvent,
@@ -31,8 +31,8 @@ class SidebarNavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
       case NavigationEvents.AboutMeClickedEvent:
       yield AboutMeScreen();
         break;
-      case NavigationEvents.ContactsClickedEvent:
-      yield HomeScreen();
+      case NavigationEvents.ContactClickedEvent:
+      yield ContactScreen();
         break;
       case NavigationEvents.PassionClickedEvent:
       yield HomeScreen();
