@@ -1,6 +1,7 @@
 
-import '../bloc/sidebar_navigation_bloc.dart';
 import 'package:flutter/material.dart';
+
+import '../bloc/sidebar_navigation_bloc.dart';
 
 class HomeScreen extends StatelessWidget with NavigationStates{
   @override

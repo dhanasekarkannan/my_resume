@@ -4,6 +4,8 @@ import '../screen/home_screen.dart';
 import '../screen/aboutme_screen.dart';
 import '../screen/work_screen.dart';
 import '../screen/contact_screen.dart';
+import '../screen/passion_screen.dart';
+import '../screen/skills_screen.dart';
 
 
 enum NavigationEvents{
@@ -34,11 +36,11 @@ class SidebarNavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
       case NavigationEvents.ContactClickedEvent:
       yield ContactScreen();
         break;
-      case NavigationEvents.PassionClickedEvent:
-      yield HomeScreen();
-        break;
       case NavigationEvents.SkillsClickedEvent:
-      yield HomeScreen();
+      yield SkillsScreen();
+        break;
+      case NavigationEvents.PassionClickedEvent:
+      yield PassionScreen();
         break;
       case NavigationEvents.WorkClickedEvent:
       yield WorkScreen();

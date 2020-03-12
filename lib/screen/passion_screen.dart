@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 
-class PassionScreen extends StatelessWidget {
+import '../bloc/sidebar_navigation_bloc.dart';
+
+class PassionScreen extends StatelessWidget with NavigationStates {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Expanded(
-        child: Center(
-          child: Text(
-            "Passion",
-            style: TextStyle(
-              fontSize: 40,
-              fontWeight: FontWeight.w800,
-            ),
+      body: Center(
+        child: Text(
+          "Passion",
+          style: TextStyle(
+            fontSize: 40,
+            fontWeight: FontWeight.w800,
           ),
         ),
       ),
     );
   }
 }
+
