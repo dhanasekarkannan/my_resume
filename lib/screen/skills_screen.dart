@@ -34,6 +34,7 @@ class SkillsScreen extends StatelessWidget with NavigationStates {
                       trailing: index%2 != 0 ? Icon( Icons.ac_unit, color: Colors.indigo,) : null,
                     ),
                   );
+                  
                 })),
       ),
     );
