@@ -13,10 +13,9 @@ class MenuWidget extends StatelessWidget {
       onTap: onTap,
       child: ListTile(
         leading: CircleAvatar(
-          child: Icon( icon),
+          child: Icon(icon),
         ),
-        title:
-            Text( title , style: TextStyle(color: const Color(0xFF262AAA))),
+        title: Text(title, style: TextStyle(color: const Color(0xFF262AAA))),
       ),
     );
   }

@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-
 class GoogleMapsWidget extends StatefulWidget {
   @override
   _GoogleMapsWidgetState createState() => _GoogleMapsWidgetState();
@@ -26,15 +25,13 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return  GoogleMap(
-        mapType: MapType.hybrid,
-        initialCameraPosition: _kGooglePlex,
-        onMapCreated: (GoogleMapController controller) {
-          _controller.complete(controller);
-        },
-      );
-      
-    
+    return GoogleMap(
+      mapType: MapType.hybrid,
+      initialCameraPosition: _kGooglePlex,
+      onMapCreated: (GoogleMapController controller) {
+        _controller.complete(controller);
+      },
+    );
   }
 
   Future<void> _goToTheLake() async {

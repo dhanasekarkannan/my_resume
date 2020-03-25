@@ -1,8 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dhana_resume/bloc/sidebar_navigation_bloc.dart';
-
 
 import './screen/sidebar_screen.dart';
 
@@ -31,7 +29,8 @@ class MyHomePage extends StatelessWidget {
         create: (context) => SidebarNavigationBloc(),
         child: Stack(
           children: <Widget>[
-            BlocBuilder<SidebarNavigationBloc, NavigationStates>(builder: (context, navigationState ){
+            BlocBuilder<SidebarNavigationBloc, NavigationStates>(
+                builder: (context, navigationState) {
               return navigationState as Widget;
             }),
             SidebarScreen(),

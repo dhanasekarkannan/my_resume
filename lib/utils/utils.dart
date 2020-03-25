@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-class Texts {
-  static const contactMe = 'Contact Me';
+class UrlLinks {
+  static const profilePicURL =
+      "https://pbs.twimg.com/profile_images/1025219653084172288/IB6sMLR__400x400.jpg";
 }
 
 class AppColors {

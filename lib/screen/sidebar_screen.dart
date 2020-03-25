@@ -68,7 +68,7 @@ class _SidebarScreenState extends State<SidebarScreen>
                 Expanded(
                     child: Container(
                         // color: const Color(0xFF262AAA),
-                        color :  Colors.white,
+                        color: Colors.white,
                         child: Column(
                           children: <Widget>[
                             SizedBox(height: 100),
@@ -90,8 +90,8 @@ class _SidebarScreenState extends State<SidebarScreen>
                               ),
                               subtitle: Text(
                                 "sendmailtodhana@gmail.com",
-                                style: TextStyle(
-                                    fontSize: 20, color: Colors.blue),
+                                style:
+                                    TextStyle(fontSize: 15, color: Colors.blue),
                               ),
                             ),
                             Divider(
@@ -101,7 +101,7 @@ class _SidebarScreenState extends State<SidebarScreen>
                             MenuWidget(
                               title: "Home",
                               icon: Icons.home,
-                              onTap: (){
+                              onTap: () {
                                 onIconPressed();
                                 BlocProvider.of<SidebarNavigationBloc>(context)
                                     .add(NavigationEvents.HomeClickedEvent);
@@ -116,7 +116,7 @@ class _SidebarScreenState extends State<SidebarScreen>
                             MenuWidget(
                               title: "About Me",
                               icon: Icons.perm_contact_calendar,
-                              onTap: (){
+                              onTap: () {
                                 onIconPressed();
                                 BlocProvider.of<SidebarNavigationBloc>(context)
                                     .add(NavigationEvents.AboutMeClickedEvent);
@@ -131,7 +131,7 @@ class _SidebarScreenState extends State<SidebarScreen>
                             MenuWidget(
                               title: "Work",
                               icon: Icons.laptop_windows,
-                              onTap: (){
+                              onTap: () {
                                 onIconPressed();
                                 BlocProvider.of<SidebarNavigationBloc>(context)
                                     .add(NavigationEvents.WorkClickedEvent);
@@ -146,7 +146,7 @@ class _SidebarScreenState extends State<SidebarScreen>
                             MenuWidget(
                               title: "Skills",
                               icon: Icons.laptop_windows,
-                              onTap: (){
+                              onTap: () {
                                 onIconPressed();
                                 BlocProvider.of<SidebarNavigationBloc>(context)
                                     .add(NavigationEvents.SkillsClickedEvent);
@@ -161,7 +161,7 @@ class _SidebarScreenState extends State<SidebarScreen>
                             MenuWidget(
                               title: "Passion",
                               icon: Icons.laptop_windows,
-                              onTap: (){
+                              onTap: () {
                                 onIconPressed();
                                 BlocProvider.of<SidebarNavigationBloc>(context)
                                     .add(NavigationEvents.PassionClickedEvent);
@@ -176,7 +176,7 @@ class _SidebarScreenState extends State<SidebarScreen>
                             MenuWidget(
                               title: "Contact",
                               icon: Icons.contact_phone,
-                              onTap: (){
+                              onTap: () {
                                 onIconPressed();
                                 BlocProvider.of<SidebarNavigationBloc>(context)
                                     .add(NavigationEvents.ContactClickedEvent);
@@ -196,7 +196,7 @@ class _SidebarScreenState extends State<SidebarScreen>
                           alignment: Alignment.centerLeft,
                           width: 35,
                           height: 100,
-                          color: Colors.white ,
+                          color: Colors.white,
                           child: AnimatedIcon(
                               color: const Color(0xFF262AAA),
                               icon: AnimatedIcons.menu_arrow,

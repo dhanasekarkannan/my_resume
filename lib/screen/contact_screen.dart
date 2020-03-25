@@ -4,6 +4,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../bloc/sidebar_navigation_bloc.dart';
 import '../utils/utils.dart';
+import '../utils/textStrings.dart';
 import '../widget/googleMaps_widget.dart';
 
 class ContactScreen extends StatelessWidget with NavigationStates {
@@ -12,7 +13,7 @@ class ContactScreen extends StatelessWidget with NavigationStates {
     return Scaffold(
       body: Container(
         child: ListView(children: <Widget>[
-           Container(
+          Container(
             height: MediaQuery.of(context).size.height * 30 / 100,
             color: Colors.blue,
             child: GoogleMapsWidget(),
@@ -21,7 +22,7 @@ class ContactScreen extends StatelessWidget with NavigationStates {
             padding: const EdgeInsets.only(top: 50.0),
             child: Column(
               children: <Widget>[
-                Text(Texts.contactMe),
+                Text(TextStrings.contactMe),
                 SizedBox(
                   height: 30.0,
                 ),

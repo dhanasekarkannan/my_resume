@@ -7,8 +7,7 @@ import '../screen/contact_screen.dart';
 import '../screen/passion_screen.dart';
 import '../screen/skills_screen.dart';
 
-
-enum NavigationEvents{
+enum NavigationEvents {
   HomeClickedEvent,
   AboutMeClickedEvent,
   ContactClickedEvent,
@@ -19,33 +18,31 @@ enum NavigationEvents{
 
 abstract class NavigationStates {}
 
-
 class SidebarNavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
   @override
   NavigationStates get initialState => HomeScreen();
 
   @override
   Stream<NavigationStates> mapEventToState(NavigationEvents event) async* {
-    switch (event){
+    switch (event) {
       case NavigationEvents.HomeClickedEvent:
-      yield HomeScreen();
-      break;
+        yield HomeScreen();
+        break;
       case NavigationEvents.AboutMeClickedEvent:
-      yield AboutMeScreen();
+        yield AboutMeScreen();
         break;
       case NavigationEvents.ContactClickedEvent:
-      yield ContactScreen();
+        yield ContactScreen();
         break;
       case NavigationEvents.SkillsClickedEvent:
-      yield SkillsScreen();
+        yield SkillsScreen();
         break;
       case NavigationEvents.PassionClickedEvent:
-      yield PassionScreen();
+        yield PassionScreen();
         break;
       case NavigationEvents.WorkClickedEvent:
-      yield WorkScreen();
+        yield WorkScreen();
         break;
     }
   }
-
 }

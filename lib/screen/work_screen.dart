@@ -17,7 +17,6 @@ class _WorkScreenState extends State<WorkScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -98,4 +97,3 @@ class MyItem extends StatelessWidget {
     );
   }
 }
-
