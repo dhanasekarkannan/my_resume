@@ -82,7 +82,7 @@ class _SidebarScreenState extends State<SidebarScreen>
                                   // ),
                                   ),
                               title: Text(
-                                "Dhana",
+                                "Dhanasekar",
                                 style: TextStyle(
                                     fontSize: 30,
                                     fontWeight: FontWeight.w700,

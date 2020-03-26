@@ -29,10 +29,24 @@ class MyHomePage extends StatelessWidget {
         create: (context) => SidebarNavigationBloc(),
         child: Stack(
           children: <Widget>[
-            BlocBuilder<SidebarNavigationBloc, NavigationStates>(
+            Container(
+        height: double.infinity,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            tileMode: TileMode.repeated,
+            colors: [
+              const Color(0xFF262AAA),
+              const Color(0xFFE65258),
+            ],
+          ),
+        ),
+        child :BlocBuilder<SidebarNavigationBloc, NavigationStates>(
                 builder: (context, navigationState) {
               return navigationState as Widget;
             }),
+            ),
             SidebarScreen(),
           ],
         ),

@@ -14,36 +14,63 @@ class AppColors {
 class Fonts {
   static const primaryFont = "Quicksand";
 }
-
+class WorkSample {
+  static const workset = [
+    {
+      "workId": "1",
+      "workName": "Accumen Innovations",
+      "workDesg": "Software Developer",
+      "workStart": "Mar - 2016",
+      "workEnd": "Dec - 2017",
+      "workLoc": "Bangalore, Kenya, Dubai",
+    },
+    {
+      "workId": "2",
+      "workName": "Freelancer",
+      "workDesg": "Software Developer",
+      "workStart": "Jan - 2018",
+      "workEnd": "Dec - 2018",
+      "workLoc" : "Chennai",
+    },
+    {
+      "workId": "3",
+      "workName": "Virtusa Consulting",
+      "workDesg": "Associate Consultant",
+      "workStart": "Dec - 2018",
+      "workEnd": "Present",
+      "workLoc": "Hyderabad",
+    }
+  ];
+}
 class SkillsSample {
   static const skillset = [
     {
       "skillId": "1",
-      "skillName": "Angular",
+      "skillName": "Flutter",
       "skillScore": "9",
       "skillVersion": "9",
     },
     {
       "skillId": "1",
-      "skillName": "Angular",
+      "skillName": "Node",
       "skillScore": "9",
       "skillVersion": "9",
     },
     {
       "skillId": "1",
-      "skillName": "Angular",
+      "skillName": "C, C++",
       "skillScore": "9",
       "skillVersion": "9",
     },
     {
       "skillId": "1",
-      "skillName": "Angular",
+      "skillName": "MySQL",
       "skillScore": "9",
       "skillVersion": "9",
     },
     {
       "skillId": "1",
-      "skillName": "Angular",
+      "skillName": "Swift",
       "skillScore": "9",
       "skillVersion": "9",
     },

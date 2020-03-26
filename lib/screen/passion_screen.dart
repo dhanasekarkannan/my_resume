@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import '../bloc/sidebar_navigation_bloc.dart';
 import '../widget/indicator.dart';
 
-
 class PassionScreen extends StatefulWidget with NavigationStates {
   @override
   _PassionScreenState createState() => _PassionScreenState();
@@ -15,91 +14,92 @@ class _PassionScreenState extends State<PassionScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-          body: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Center(
-              child: AspectRatio(
-        aspectRatio: 1.3,
-        child: Card(
-              color: Colors.white,
-              child: Row(
-                children: <Widget>[
-                  const SizedBox(
-                    height: 18,
-                  ),
-                  Expanded(
-                    child: AspectRatio(
-                      aspectRatio: 1,
-                      child: PieChart(
-                        PieChartData(
-                            pieTouchData: PieTouchData(touchCallback: (pieTouchResponse) {
-                              setState(() {
-                                if (pieTouchResponse.touchInput is FlLongPressEnd ||
-                                    pieTouchResponse.touchInput is FlPanEnd) {
-                                  touchedIndex = -1;
-                                } else {
-                                  touchedIndex = pieTouchResponse.touchedSectionIndex;
-                                }
-                              });
-                            }),
-                            borderData: FlBorderData(
-                              show: false,
-                            ),
-                            sectionsSpace: 0,
-                            centerSpaceRadius: 40,
-                            sections: showingSections()),
-                      ),
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: Center(
+        child: AspectRatio(
+          aspectRatio: 1.3,
+          child: Card(
+            color: Colors.white,
+            child: Row(
+              children: <Widget>[
+                const SizedBox(
+                  height: 18,
+                ),
+                Expanded(
+                  child: AspectRatio(
+                    aspectRatio: 1,
+                    child: PieChart(
+                      PieChartData(
+                          pieTouchData:
+                              PieTouchData(touchCallback: (pieTouchResponse) {
+                            setState(() {
+                              if (pieTouchResponse.touchInput
+                                      is FlLongPressEnd ||
+                                  pieTouchResponse.touchInput is FlPanEnd) {
+                                touchedIndex = -1;
+                              } else {
+                                touchedIndex =
+                                    pieTouchResponse.touchedSectionIndex;
+                              }
+                            });
+                          }),
+                          borderData: FlBorderData(
+                            show: false,
+                          ),
+                          sectionsSpace: 0,
+                          centerSpaceRadius: 40,
+                          sections: showingSections()),
                     ),
                   ),
-                  Column(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const <Widget>[
-                      Indicator(
-                        color: Color(0xff0293ee),
-                        text: 'First',
-                        isSquare: true,
-                      ),
-                      SizedBox(
-                        height: 4,
-                      ),
-                      Indicator(
-                        color: Color(0xfff8b250),
-                        text: 'Second',
-                        isSquare: true,
-                      ),
-                      SizedBox(
-                        height: 4,
-                      ),
-                      Indicator(
-                        color: Color(0xff845bef),
-                        text: 'Third',
-                        isSquare: true,
-                      ),
-                      SizedBox(
-                        height: 4,
-                      ),
-                      Indicator(
-                        color: Color(0xff13d38e),
-                        text: 'Fourth',
-                        isSquare: true,
-                      ),
-                      SizedBox(
-                        height: 18,
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    width: 28,
-                  ),
-                ],
-              ),
-        ),
-      ),
+                ),
+                Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: const <Widget>[
+                    Indicator(
+                      color: Color(0xff0293ee),
+                      text: 'First',
+                      isSquare: true,
+                    ),
+                    SizedBox(
+                      height: 4,
+                    ),
+                    Indicator(
+                      color: Color(0xfff8b250),
+                      text: 'Second',
+                      isSquare: true,
+                    ),
+                    SizedBox(
+                      height: 4,
+                    ),
+                    Indicator(
+                      color: Color(0xff845bef),
+                      text: 'Third',
+                      isSquare: true,
+                    ),
+                    SizedBox(
+                      height: 4,
+                    ),
+                    Indicator(
+                      color: Color(0xff13d38e),
+                      text: 'Fourth',
+                      isSquare: true,
+                    ),
+                    SizedBox(
+                      height: 18,
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  width: 28,
+                ),
+              ],
             ),
           ),
+        ),
+      ),
     );
   }
 
@@ -116,7 +116,9 @@ class _PassionScreenState extends State<PassionScreen> {
             title: '40%',
             radius: radius,
             titleStyle: TextStyle(
-                fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
+                fontSize: fontSize,
+                fontWeight: FontWeight.bold,
+                color: const Color(0xffffffff)),
           );
         case 1:
           return PieChartSectionData(
@@ -125,7 +127,9 @@ class _PassionScreenState extends State<PassionScreen> {
             title: '30%',
             radius: radius,
             titleStyle: TextStyle(
-                fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
+                fontSize: fontSize,
+                fontWeight: FontWeight.bold,
+                color: const Color(0xffffffff)),
           );
         case 2:
           return PieChartSectionData(
@@ -134,7 +138,9 @@ class _PassionScreenState extends State<PassionScreen> {
             title: '15%',
             radius: radius,
             titleStyle: TextStyle(
-                fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
+                fontSize: fontSize,
+                fontWeight: FontWeight.bold,
+                color: const Color(0xffffffff)),
           );
         case 3:
           return PieChartSectionData(
@@ -143,7 +149,9 @@ class _PassionScreenState extends State<PassionScreen> {
             title: '15%',
             radius: radius,
             titleStyle: TextStyle(
-                fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
+                fontSize: fontSize,
+                fontWeight: FontWeight.bold,
+                color: const Color(0xffffffff)),
           );
         default:
           return null;
