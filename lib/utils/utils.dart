@@ -14,34 +14,42 @@ class AppColors {
 class Fonts {
   static const primaryFont = "Quicksand";
 }
+
 class WorkSample {
   static const workset = [
     {
       "workId": "1",
       "workName": "Accumen Innovations",
       "workDesg": "Software Developer",
-      "workStart": "Mar - 2016",
-      "workEnd": "Dec - 2017",
+      "workStart": "Mar 2016",
+      "workEnd": "Dec 2017",
       "workLoc": "Bangalore, Kenya, Dubai",
+      "workLogo":
+          'https://media-exp1.licdn.com/dms/image/C4E0BAQEe2Z_nU4IpEA/company-logo_200_200/0?e=1593648000&v=beta&t=94BlohLfLJPvAD3iGDW54N273nY5Vpqu0ZjdztU5kJI',
     },
     {
       "workId": "2",
       "workName": "Freelancer",
       "workDesg": "Software Developer",
-      "workStart": "Jan - 2018",
-      "workEnd": "Dec - 2018",
-      "workLoc" : "Chennai",
+      "workStart": "Jan 2018",
+      "workEnd": "Dec 2018",
+      "workLoc": "Chennai",
+      "workLogo":
+          'https://media-exp1.licdn.com/dms/image/C560BAQEJe-MEhPTm7w/company-logo_200_200/0?e=1593648000&v=beta&t=jwaVT0BDqUIqSjf_zMz-Vbps7sRkDqxLwxQl8MIlPUA',
     },
     {
       "workId": "3",
       "workName": "Virtusa Consulting",
       "workDesg": "Associate Consultant",
-      "workStart": "Dec - 2018",
+      "workStart": "Dec 2018",
       "workEnd": "Present",
       "workLoc": "Hyderabad",
+      "workLogo":
+          'https://media-exp1.licdn.com/dms/image/C4E0BAQEe2Z_nU4IpEA/company-logo_200_200/0?e=1593648000&v=beta&t=94BlohLfLJPvAD3iGDW54N273nY5Vpqu0ZjdztU5kJI',
     }
   ];
 }
+
 class SkillsSample {
   static const skillset = [
     {
