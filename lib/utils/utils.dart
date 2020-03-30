@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../model/work_model.dart';
+
+
 class UrlLinks {
   static const profilePicURL =
       "https://pbs.twimg.com/profile_images/1025219653084172288/IB6sMLR__400x400.jpg";
@@ -16,37 +19,37 @@ class Fonts {
 }
 
 class WorkSample {
-  static const workset = [
-    {
-      "workId": "1",
-      "workName": "Accumen Innovations",
-      "workDesg": "Software Developer",
-      "workStart": "Mar 2016",
-      "workEnd": "Dec 2017",
-      "workLoc": "Bangalore, Kenya, Dubai",
-      "workLogo":
-          'https://media-exp1.licdn.com/dms/image/C4E0BAQEe2Z_nU4IpEA/company-logo_200_200/0?e=1593648000&v=beta&t=94BlohLfLJPvAD3iGDW54N273nY5Vpqu0ZjdztU5kJI',
-    },
-    {
-      "workId": "2",
-      "workName": "Freelancer",
-      "workDesg": "Software Developer",
-      "workStart": "Jan 2018",
-      "workEnd": "Dec 2018",
-      "workLoc": "Chennai",
-      "workLogo":
+ static final  List<WorkData> workset = [
+    WorkData( 
+      workId: "1",
+      workName: "Acumen Innovations",
+      workDesg: "Software Engineer",
+      workStart: "Mar 2016",
+      workEnd: "Dec 2017",
+      workLoc: "Bangalore, Kenya, Dubai",
+      workLogoUrl:
+          "https://media-exp1.licdn.com/dms/image/C4E0BAQEe2Z_nU4IpEA/company-logo_200_200/0?e=1593648000&v=beta&t=94BlohLfLJPvAD3iGDW54N273nY5Vpqu0ZjdztU5kJI",
+    ),
+    WorkData( 
+      workId: "2",
+      workName: "Freelancer",
+      workDesg: "Software Developer",
+      workStart: "Jan 2018",
+      workEnd: "Dec 2018",
+      workLoc: "Chennai",
+      workLogoUrl:
           'https://media-exp1.licdn.com/dms/image/C560BAQEJe-MEhPTm7w/company-logo_200_200/0?e=1593648000&v=beta&t=jwaVT0BDqUIqSjf_zMz-Vbps7sRkDqxLwxQl8MIlPUA',
-    },
-    {
-      "workId": "3",
-      "workName": "Virtusa Consulting",
-      "workDesg": "Associate Consultant",
-      "workStart": "Dec 2018",
-      "workEnd": "Present",
-      "workLoc": "Hyderabad",
-      "workLogo":
+    ),
+    WorkData( 
+      workId: "3",
+      workName: "Virtusa Consulting",
+      workDesg: "Associate Consultant",
+      workStart: "Dec 2018",
+      workEnd: "Present",
+      workLoc: "Hyderabad",
+      workLogoUrl:
           'https://media-exp1.licdn.com/dms/image/C4E0BAQEe2Z_nU4IpEA/company-logo_200_200/0?e=1593648000&v=beta&t=94BlohLfLJPvAD3iGDW54N273nY5Vpqu0ZjdztU5kJI',
-    }
+    )
   ];
 }
 
