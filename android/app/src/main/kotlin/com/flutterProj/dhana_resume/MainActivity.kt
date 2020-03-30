@@ -1,4 +1,4 @@
-package com.example.dhana_resume
+package com.flutterProj.dhana_resume
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity

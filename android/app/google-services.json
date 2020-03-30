@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "223924439264",
+    "firebase_url": "https://dhanasekar-resume.firebaseio.com",
+    "project_id": "dhanasekar-resume",
+    "storage_bucket": "dhanasekar-resume.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:223924439264:android:d730dba42543f754f7a885",
+        "android_client_info": {
+          "package_name": "com.flutterProj.dhana_resume"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "223924439264-6ikoeiq8daijjfolmsp8pu6gu3n0u36g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8m76himlpa_GK-ZggSvA4bIKnx7lwod8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "223924439264-6ikoeiq8daijjfolmsp8pu6gu3n0u36g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
