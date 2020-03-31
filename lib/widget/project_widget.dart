@@ -10,13 +10,11 @@ class ProjectWidget extends StatelessWidget {
   ProjectWidget({@required this.index});
 
   static const colors = [
-    Colors.pink,
-    Colors.indigo,
+    // Colors.indigo,
     Colors.grey,
     Colors.red,
-    Colors.blue,
     Colors.green,
-    Colors.yellow,
+    Colors.blue,
   ];
 
   @override
