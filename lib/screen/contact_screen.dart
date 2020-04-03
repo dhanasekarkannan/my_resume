@@ -10,42 +10,68 @@ import '../widget/googleMaps_widget.dart';
 class ContactScreen extends StatelessWidget with NavigationStates {
   @override
   Widget build(BuildContext context) {
-    return ListView(children: <Widget>[
-      Container(
-        height: MediaQuery.of(context).size.height * 30 / 100,
-        color: Colors.blue,
-        child: GoogleMapsWidget(),
-      ),
-      Container(
-        padding: const EdgeInsets.only(top: 50.0),
-        child: Column(
-          children: <Widget>[
-            Text(TextStrings.contactMe),
-            SizedBox(
-              height: 30.0,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                _buildIconCard(FontAwesomeIcons.facebookF),
-                SizedBox(
-                  width: 10.0,
-                ),
-                _buildIconCard(FontAwesomeIcons.twitter),
-                SizedBox(
-                  width: 10.0,
-                ),
-                _buildIconCard(FontAwesomeIcons.instagram),
-                SizedBox(
-                  width: 10.0,
-                ),
-                _buildIconCard(FontAwesomeIcons.linkedinIn),
-              ],
-            )
-          ],
+    return 
+    // ListView(children: <Widget>[
+      // Container(
+      //   height: MediaQuery.of(context).size.height * 30 / 100,
+      //   color: Colors.blue,
+      //   child: GoogleMapsWidget(),
+      // ),
+      Center(
+        child: Container(
+          color: Colors.white,
+          margin: const EdgeInsets.all(30),
+          // padding: const EdgeInsets.only(top: 50.0),
+          child: ListView(
+          //   children: <Widget>[
+          //     Text(TextStrings.contactMe),
+          //     SizedBox(
+          //       height: 30.0,
+          //     ),
+              // Row(
+                // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      _buildIconCard(FontAwesomeIcons.facebookF),
+                      
+                      Text("Facebook")
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      _buildIconCard(FontAwesomeIcons.instagram),
+                      
+                      Text("Facebook")
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      _buildIconCard(FontAwesomeIcons.twitter),
+                      
+                      Text("Facebook")
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      _buildIconCard(FontAwesomeIcons.linkedinIn),
+                      
+                      Text("Facebook")
+                    ],
+                  ),
+                  
+                  
+              //   ],
+              // )
+            ],
+          ),
         ),
-      ),
-    ]);
+      );
+    // ]);
   }
 
   Widget _buildIconCard(IconData icon) {
