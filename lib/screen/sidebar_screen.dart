@@ -137,51 +137,51 @@ class _SidebarScreenState extends State<SidebarScreen>
                                     .add(NavigationEvents.WorkClickedEvent);
                               },
                             ),
-                            Divider(
-                              height: 3,
-                              indent: 20,
-                              endIndent: 20,
-                              color: Colors.blue.withOpacity(0.5),
-                            ),
-                            MenuWidget(
-                              title: "Skills",
-                              icon: Icons.laptop_windows,
-                              onTap: () {
-                                onIconPressed();
-                                BlocProvider.of<SidebarNavigationBloc>(context)
-                                    .add(NavigationEvents.SkillsClickedEvent);
-                              },
-                            ),
-                            Divider(
-                              height: 3,
-                              indent: 20,
-                              endIndent: 20,
-                              color: Colors.blue.withOpacity(0.5),
-                            ),
-                            MenuWidget(
-                              title: "Passion",
-                              icon: Icons.laptop_windows,
-                              onTap: () {
-                                onIconPressed();
-                                BlocProvider.of<SidebarNavigationBloc>(context)
-                                    .add(NavigationEvents.PassionClickedEvent);
-                              },
-                            ),
-                            Divider(
-                              height: 3,
-                              indent: 20,
-                              endIndent: 20,
-                              color: Colors.blue.withOpacity(0.5),
-                            ),
-                            MenuWidget(
-                              title: "Contact",
-                              icon: Icons.contact_phone,
-                              onTap: () {
-                                onIconPressed();
-                                BlocProvider.of<SidebarNavigationBloc>(context)
-                                    .add(NavigationEvents.ContactClickedEvent);
-                              },
-                            ),
+                            // Divider(
+                            //   height: 3,
+                            //   indent: 20,
+                            //   endIndent: 20,
+                            //   color: Colors.blue.withOpacity(0.5),
+                            // ),
+                            // MenuWidget(
+                            //   title: "Skills",
+                            //   icon: Icons.laptop_windows,
+                            //   onTap: () {
+                            //     onIconPressed();
+                            //     BlocProvider.of<SidebarNavigationBloc>(context)
+                            //         .add(NavigationEvents.SkillsClickedEvent);
+                            //   },
+                            // ),
+                            // Divider(
+                            //   height: 3,
+                            //   indent: 20,
+                            //   endIndent: 20,
+                            //   color: Colors.blue.withOpacity(0.5),
+                            // ),
+                            // MenuWidget(
+                            //   title: "Passion",
+                            //   icon: Icons.laptop_windows,
+                            //   onTap: () {
+                            //     onIconPressed();
+                            //     BlocProvider.of<SidebarNavigationBloc>(context)
+                            //         .add(NavigationEvents.PassionClickedEvent);
+                            //   },
+                            // ),
+                            // Divider(
+                            //   height: 3,
+                            //   indent: 20,
+                            //   endIndent: 20,
+                            //   color: Colors.blue.withOpacity(0.5),
+                            // ),
+                            // MenuWidget(
+                            //   title: "Contact",
+                            //   icon: Icons.contact_phone,
+                            //   onTap: () {
+                            //     onIconPressed();
+                            //     BlocProvider.of<SidebarNavigationBloc>(context)
+                            //         .add(NavigationEvents.ContactClickedEvent);
+                            //   },
+                            // ),
                           ],
                         ))),
                 Align(
