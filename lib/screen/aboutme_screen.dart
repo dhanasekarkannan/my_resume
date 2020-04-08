@@ -1,3 +1,5 @@
+import 'package:dhana_resume/provider/work_provider.dart';
+
 import '../bloc/sidebar_navigation_bloc.dart';
 import 'package:flutter/material.dart';
 
@@ -42,7 +44,7 @@ class AboutMeScreen extends StatelessWidget with NavigationStates {
             ),
           ),
         ),
-        TimeLineWidget(workSet: WorkSample.workset),
+        TimeLineWidget(workSet: WorkProvider().getWorks()),
       ],
     );
   }

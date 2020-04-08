@@ -5,7 +5,7 @@ import 'package:dhana_resume/model/work_model.dart';
 
 
 class TimeLineWidget extends StatelessWidget {
-  final List<WorkData> workSet;
+  final List<WorkModel> workSet;
 
   TimeLineWidget({@required this.workSet});
 

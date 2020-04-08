@@ -1,11 +1,11 @@
+import 'package:dhana_resume/model/skills_model.dart';
+import 'package:dhana_resume/provider/skills_provider.dart';
 import 'package:flutter/material.dart';
 
 import '../bloc/sidebar_navigation_bloc.dart';
-import '../utils/utils.dart';
 
 class SkillsScreen extends StatelessWidget with NavigationStates {
-  static const List skillList = SkillsSample.skillset;
-  int skillListlength = skillList.length;
+   final List<SkillsModel> _skillList = SkillsProvider().getSkills();
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class SkillsScreen extends StatelessWidget with NavigationStates {
       padding: const EdgeInsets.all(20.0),
       child: Center(
           child: ListView.builder(
-              itemCount: SkillsSample.skillset.length,
+              itemCount: _skillList.length,
               itemBuilder: (BuildContext context, int index) {
                 return Card(
                   elevation: 3.5,
@@ -29,9 +29,9 @@ class SkillsScreen extends StatelessWidget with NavigationStates {
                             ],
                           )
                         : null,
-                    title: Text(SkillsSample.skillset[index]["skillName"]),
+                    title: Text(_skillList[index].skillTitle),
                     subtitle:
-                        Text(SkillsSample.skillset[index]["skillVersion"]),
+                        Text(_skillList[index].skillPercnt),
                     trailing: index % 2 != 0
                         ? Icon(
                             Icons.ac_unit,

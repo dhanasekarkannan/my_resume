@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../model/work_model.dart';
 
 
 class UrlLinks {
@@ -18,72 +17,3 @@ class Fonts {
   static const primaryFont = "Quicksand";
 }
 
-class WorkSample {
- static final  List<WorkData> workset = [
-    WorkData( 
-      workId: "1",
-      workName: "Acumen Innovations",
-      workDesg: "Software Engineer",
-      workStart: "Mar 2016",
-      workEnd: "Dec 2017",
-      workLoc: "Bangalore, Kenya, Dubai",
-      workLogoUrl:
-          "https://media-exp1.licdn.com/dms/image/C4E0BAQEe2Z_nU4IpEA/company-logo_200_200/0?e=1593648000&v=beta&t=94BlohLfLJPvAD3iGDW54N273nY5Vpqu0ZjdztU5kJI",
-    ),
-    WorkData( 
-      workId: "2",
-      workName: "Freelancer",
-      workDesg: "Software Developer",
-      workStart: "Jan 2018",
-      workEnd: "Dec 2018",
-      workLoc: "Chennai",
-      workLogoUrl:
-          'https://media-exp1.licdn.com/dms/image/C560BAQEJe-MEhPTm7w/company-logo_200_200/0?e=1593648000&v=beta&t=jwaVT0BDqUIqSjf_zMz-Vbps7sRkDqxLwxQl8MIlPUA',
-    ),
-    WorkData( 
-      workId: "3",
-      workName: "Virtusa Consulting",
-      workDesg: "Associate Consultant",
-      workStart: "Dec 2018",
-      workEnd: "Present",
-      workLoc: "Hyderabad",
-      workLogoUrl:
-          'https://media-exp1.licdn.com/dms/image/C4E0BAQEe2Z_nU4IpEA/company-logo_200_200/0?e=1593648000&v=beta&t=94BlohLfLJPvAD3iGDW54N273nY5Vpqu0ZjdztU5kJI',
-    )
-  ];
-}
-
-class SkillsSample {
-  static const skillset = [
-    {
-      "skillId": "1",
-      "skillName": "Flutter",
-      "skillScore": "9",
-      "skillVersion": "9",
-    },
-    {
-      "skillId": "1",
-      "skillName": "Node",
-      "skillScore": "9",
-      "skillVersion": "9",
-    },
-    {
-      "skillId": "1",
-      "skillName": "C, C++",
-      "skillScore": "9",
-      "skillVersion": "9",
-    },
-    {
-      "skillId": "1",
-      "skillName": "MySQL",
-      "skillScore": "9",
-      "skillVersion": "9",
-    },
-    {
-      "skillId": "1",
-      "skillName": "Swift",
-      "skillScore": "9",
-      "skillVersion": "9",
-    },
-  ];
-}

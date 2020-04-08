@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 
-class WorkData {
+class WorkModel {
   final String workId;
   final String workName;
   final String workDesg;
@@ -9,7 +9,7 @@ class WorkData {
   final String workLoc;
   final String workLogoUrl;
 
-  WorkData({
+  WorkModel({
     @required this.workId,
     @required this.workName,
     @required this.workDesg,
