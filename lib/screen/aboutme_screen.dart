@@ -1,12 +1,39 @@
-import 'package:dhana_resume/provider/work_provider.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../bloc/sidebar_navigation_bloc.dart';
-import 'package:flutter/material.dart';
-
 import '../widget/timeLine_widget.dart';
-import '../utils/utils.dart';
+import '../provider/work_provider.dart';
 
-class AboutMeScreen extends StatelessWidget with NavigationStates {
+class AboutMeScreen extends StatefulWidget with NavigationStates {
+  @override
+  _AboutMeScreenState createState() => _AboutMeScreenState();
+}
+
+class _AboutMeScreenState extends State<AboutMeScreen> {
+  var _isInit = true;
+  var _isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    if (_isInit) {
+      setState(() {
+        _isInit = false;
+      });
+      if (_isLoading) {
+        Provider.of<WorkProvider>(context).fetchAndSetWorks().then((_) {
+          _isLoading = false;
+        });
+      }
+    }
+    super.didChangeDependencies();
+  }
+
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -44,7 +71,15 @@ class AboutMeScreen extends StatelessWidget with NavigationStates {
             ),
           ),
         ),
-        TimeLineWidget(workSet: WorkProvider().getWorks()),
+        _isLoading
+            ? Center(
+                child: CircularProgressIndicator(
+                  backgroundColor: Colors.amber,
+                  valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                ),
+              )
+            : TimeLineWidget(
+                workSet: Provider.of<WorkProvider>(context).getWorks),
       ],
     );
   }

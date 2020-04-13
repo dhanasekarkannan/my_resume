@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
-
-
 class UrlLinks {
   static const profilePicURL =
       "https://pbs.twimg.com/profile_images/1025219653084172288/IB6sMLR__400x400.jpg";
+  static const firebaseURL = "https://dhanasekar-resume.firebaseio.com/";
 }
 
 class AppColors {
