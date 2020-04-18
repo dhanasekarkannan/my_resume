@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 
 class UrlLinks {
   static const profilePicURL =
-      "https://pbs.twimg.com/profile_images/1025219653084172288/IB6sMLR__400x400.jpg";
+  "https://firebasestorage.googleapis.com/v0/b/dhanasekar-resume.appspot.com/o/MyProfileImg.jpg?alt=media&token=667e3e98-11b6-408f-848f-a1c3d72a3df6";
+      // "gs://dhanasekar-resume.appspot.com/MyProfileImg.jpg";
   static const firebaseURL = "https://dhanasekar-resume.firebaseio.com/";
+
+
 }
 
 class AppColors {
