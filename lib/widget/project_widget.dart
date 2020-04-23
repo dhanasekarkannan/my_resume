@@ -3,7 +3,7 @@ import 'package:dhana_resume/provider/project_providers.dart';
 import 'package:flutter/material.dart';
 
 class ProjectWidget extends StatelessWidget {
-  final List<ProjectData> _projects = ProjectProviders().getProjects();
+  final List<ProjectModel> _projects = ProjectProviders().getProjects();
 
   final int index;
 

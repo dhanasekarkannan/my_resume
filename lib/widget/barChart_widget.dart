@@ -72,7 +72,7 @@ class BarChartWidgetState extends State<BarChartWidget> {
                 ],
               ),
             ),
-            Padding(
+            /*Padding(
               padding: const EdgeInsets.all(8.0),
               child: Align(
                 alignment: Alignment.topRight,
@@ -91,7 +91,7 @@ class BarChartWidgetState extends State<BarChartWidget> {
                   },
                 ),
               ),
-            )
+            )*/
           ],
         ),
       ),

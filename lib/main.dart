@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 
 import './bloc/sidebar_navigation_bloc.dart';
 import './screen/sidebar_screen.dart';
-
+import './widget/appValidation_widget.dart';
 
 void main() => runApp(MyApp());
 
@@ -14,8 +14,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-        create: (_) => WorkProvider(),
-          child: MaterialApp(
+      create: (_) => WorkProvider(),
+      child: MaterialApp(
         title: 'Dhana Resume',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
@@ -28,34 +28,37 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
+  final bool validation = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocProvider<SidebarNavigationBloc>(
         create: (context) => SidebarNavigationBloc(),
         child: Stack(
-          children: <Widget>[
-            Container(
-        height: double.infinity,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            tileMode: TileMode.repeated,
-            colors: [
-              const Color(0xFF262AAA),
-              const Color(0xFFE65258),
-            ],
-          ),
-        ),
-        child :BlocBuilder<SidebarNavigationBloc, NavigationStates>(
-                builder: (context, navigationState) {
-              return navigationState as Widget;
-            }),
-            ),
-            SidebarScreen(),
-          ],
-        ),
+                children: <Widget>[
+                  Container(
+                    height: double.infinity,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        tileMode: TileMode.repeated,
+                        colors: [
+                          const Color(0xFF262AAA),
+                          const Color(0xFFE65258),
+                        ],
+                      ),
+                    ),
+                    child: 
+            BlocBuilder<SidebarNavigationBloc, NavigationStates>(
+                        builder: (context, navigationState) {
+                      return navigationState as Widget;
+                    }),
+                  ),
+                  // validation ? null : SidebarScreen(),
+                  validation ? AppValidationWidget() : SidebarScreen(),
+                ],
+              ),
       ),
     );
   }

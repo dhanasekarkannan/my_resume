@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 
-class ProjectData {
+class ProjectModel {
   final String projId;
   final String projName;
   final String projClient;
@@ -8,7 +8,7 @@ class ProjectData {
   final String projImgUrl;
   final String projDesc;
 
-  ProjectData({
+  ProjectModel({
     @required this.projId,
     @required this.projName,
     @required this.projClient,

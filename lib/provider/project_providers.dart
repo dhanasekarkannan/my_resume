@@ -1,50 +1,50 @@
 import 'package:dhana_resume/model/project_model.dart';
 
 class ProjectProviders {
-  List<ProjectData> _projects = [
-    ProjectData(
+  List<ProjectModel> _projects = [
+    ProjectModel(
         projId: "1",
         projName: "Pamoja Pos",
         projClient: "SBS Africa",
         projDesc: "Ticketing System"),
-    ProjectData(
+    ProjectModel(
         projId: "2",
         projName: "CRONOS Switch",
         projClient: "SBS Africa",
         projDesc: "Payment Switch"),
-    ProjectData(
+    ProjectModel(
         projId: "3",
         projName: "Huduma Life",
         projClient: "Kenya Govt.",
         projDesc: "Govt. services & Utility payment service"),
-    ProjectData(
+    ProjectModel(
         projId: "4",
         projName: "DTB Internet Banking",
         projClient: "DTB Bank",
         projDesc: "Internet Banking"),
-    ProjectData(
+    ProjectModel(
         projId: "5",
         projName: "Lend",
         projClient: "Freelance",
         projDesc: "Ecomerce lending application"),
-    ProjectData(
+    ProjectModel(
         projId: "6",
         projName: "Instalife",
         projClient: "HDFC Life",
         projDesc: "Insurance Agent semi offline application processing app"),
-    ProjectData(
+    ProjectModel(
         projId: "7",
         projName: "InstaServ v2.0",
         projClient: "HDFC Life",
         projDesc: "Insurance Agent customer service app"),
-    ProjectData(
+    ProjectModel(
         projId: "8",
         projName: "Customer Portal",
         projClient: "HDFC Life",
         projDesc: "Customer Portal for Insurance service request"),
   ];
 
-  List<ProjectData> getProjects() {
+  List<ProjectModel> getProjects() {
     return _projects;
   }
 
