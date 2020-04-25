@@ -48,16 +48,20 @@ class _WorkScreenState extends State<WorkScreen> {
     return Column(
       // mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        _isLoading
+         Container(
+                height: MediaQuery.of(context).size.height / 2.2,
+                child: _isLoading
             ? Center(
                 child: CircularProgressIndicator(
                   backgroundColor: Colors.amber,
                   valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
                 ),
               )
-            : Container(
-                height: MediaQuery.of(context).size.height / 2.2,
-                child: BarChartWidget( ),
+            : Consumer<SkillsProvider>(
+                  builder: (_, skills, child) {
+                    return BarChartWidget( skills ) ;
+                  },
+                ),
               ),
         Expanded(
           child: ListWheelScrollView(

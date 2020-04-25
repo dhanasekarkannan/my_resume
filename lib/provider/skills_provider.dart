@@ -30,7 +30,6 @@ class SkillsProvider with ChangeNotifier {
   Future<void> fetchAndSetSkills() async {
     try {
       final response = await http.get(url);
-      print(jsonDecode(response.body));
       final extractedData = jsonDecode(response.body) as List;
       print( jsonDecode(response.body) );
       final List<SkillsModel> loadedData = [];

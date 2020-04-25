@@ -17,6 +17,11 @@ class BarChartWidget extends StatefulWidget {
     Colors.pink,
     Colors.redAccent,
   ];
+  final SkillsProvider _skills;
+
+  BarChartWidget(
+    this._skills,
+  );
 
   @override
   State<StatefulWidget> createState() => BarChartWidgetState();
@@ -127,9 +132,8 @@ class BarChartWidgetState extends State<BarChartWidget> {
   }
 
   List<BarChartGroupData> showingGroups() =>
-      List.generate(Provider.of<SkillsProvider>(context).getSkills().length, (i) {
-        return makeGroupData(
-            i, Provider.of<SkillsProvider>(context).getSkillPercentDouble(i),
+      List.generate(widget._skills.getSkills().length, (i) {
+        return makeGroupData(i, widget._skills.getSkillPercentDouble(i),
             isTouched: i == touchedIndex);
       });
 
@@ -140,7 +144,7 @@ class BarChartWidgetState extends State<BarChartWidget> {
             tooltipBgColor: Colors.blueGrey,
             getTooltipItem: (group, groupIndex, rod, rodIndex) {
               String title;
-              title = Provider.of<SkillsProvider>(context).getSkillTitle(group.x.toInt());
+              title = widget._skills.getSkillTitle(group.x.toInt());
               return BarTooltipItem(title + '\n' + (rod.y - 1).toString(),
                   TextStyle(color: Colors.yellow));
             }),
@@ -164,7 +168,7 @@ class BarChartWidgetState extends State<BarChartWidget> {
               color: Colors.white, fontWeight: FontWeight.bold, fontSize: 14),
           margin: 16,
           getTitles: (double value) {
-            return Provider.of<SkillsProvider>(context).getSkillKey(value.toInt());
+            return widget._skills.getSkillKey(value.toInt());
           },
         ),
         leftTitles: const SideTitles(
@@ -191,7 +195,7 @@ class BarChartWidgetState extends State<BarChartWidget> {
               color: Colors.white, fontWeight: FontWeight.bold, fontSize: 14),
           margin: 16,
           getTitles: (double value) {
-            return Provider.of<SkillsProvider>(context).getSkillKey(value.toInt());
+            return widget._skills.getSkillKey(value.toInt());
           },
         ),
         leftTitles: const SideTitles(
@@ -201,7 +205,7 @@ class BarChartWidgetState extends State<BarChartWidget> {
       borderData: FlBorderData(
         show: false,
       ),
-      barGroups: List.generate(Provider.of<SkillsProvider>(context).getSkills().length, (i) {
+      barGroups: List.generate(widget._skills.getSkills().length, (i) {
         return makeGroupData(i, Random().nextInt(10).toDouble(),
             barColor: widget.availableColors[
                 Random().nextInt(widget.availableColors.length)]);
