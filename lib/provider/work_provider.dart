@@ -18,9 +18,7 @@ class WorkProvider with ChangeNotifier {
   Future<void> fetchAndSetWorks() async {
     try {
       final response = await http.get(url);
-      print(jsonDecode(response.body));
       final extractedData = jsonDecode(response.body) as List;
-      // Map<String, WorkModel>.from(json.decode(response.body) as Map<String,dynamic>);
       final List<WorkModel> loadedData = [];
       extractedData.forEach((workData) {
         loadedData.add(
@@ -33,8 +31,8 @@ class WorkProvider with ChangeNotifier {
               workLoc: workData["workLoc"],
               workLogoUrl: workData["workLogoUrl"]),
         );
-      } );
-      
+      });
+
       _works = loadedData;
       notifyListeners();
     } catch (error) {

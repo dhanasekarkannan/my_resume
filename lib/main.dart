@@ -1,3 +1,4 @@
+import 'package:dhana_resume/provider/project_providers.dart';
 import 'package:dhana_resume/provider/skills_provider.dart';
 import 'package:dhana_resume/provider/work_provider.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +19,8 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => WorkProvider()),
         ChangeNotifierProvider(create: (_) => SkillsProvider()),
+        ChangeNotifierProvider(create: (_) => ProjectProvider()),
+
       ],
       child: MaterialApp(
         title: 'Dhana Resume',

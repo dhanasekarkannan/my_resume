@@ -1,53 +1,46 @@
-import 'package:dhana_resume/model/project_model.dart';
+import 'package:flutter/material.dart';
+import 'dart:convert';
 
-class ProjectProviders {
-  List<ProjectModel> _projects = [
-    ProjectModel(
-        projId: "1",
-        projName: "Pamoja Pos",
-        projClient: "SBS Africa",
-        projDesc: "Ticketing System"),
-    ProjectModel(
-        projId: "2",
-        projName: "CRONOS Switch",
-        projClient: "SBS Africa",
-        projDesc: "Payment Switch"),
-    ProjectModel(
-        projId: "3",
-        projName: "Huduma Life",
-        projClient: "Kenya Govt.",
-        projDesc: "Govt. services & Utility payment service"),
-    ProjectModel(
-        projId: "4",
-        projName: "DTB Internet Banking",
-        projClient: "DTB Bank",
-        projDesc: "Internet Banking"),
-    ProjectModel(
-        projId: "5",
-        projName: "Lend",
-        projClient: "Freelance",
-        projDesc: "Ecomerce lending application"),
-    ProjectModel(
-        projId: "6",
-        projName: "Instalife",
-        projClient: "HDFC Life",
-        projDesc: "Insurance Agent semi offline application processing app"),
-    ProjectModel(
-        projId: "7",
-        projName: "InstaServ v2.0",
-        projClient: "HDFC Life",
-        projDesc: "Insurance Agent customer service app"),
-    ProjectModel(
-        projId: "8",
-        projName: "Customer Portal",
-        projClient: "HDFC Life",
-        projDesc: "Customer Portal for Insurance service request"),
-  ];
+import 'package:http/http.dart' as http;
+
+import '../model/project_model.dart';
+import '../utils/utils.dart';
+
+class ProjectProvider with ChangeNotifier {
+  static const url = UrlLinks.firebaseURL + "/ProjectData.json";
+
+  List<ProjectModel> _projects;
 
   List<ProjectModel> getProjects() {
     return _projects;
   }
 
+  ProjectModel getProject( index ){
+    return _projects[ index ];
+  }
 
+  Future<void> fetchAndSetProjects() async {
+    try {
+      final response = await http.get(url);
+      final extractedData = jsonDecode(response.body) as List;
+      final List<ProjectModel> loadedData = [];
+      extractedData.forEach((projData) {
+        loadedData.add(
+          ProjectModel(
+            projId: projData["projId"],
+            projName: projData["projName"],
+            projClient: projData["projClient"],
+            projDesc: projData["projDesc"],
+            projImgUrl: projData["projImgUrl"],
+            projUrl: projData["projUrl"],
+          ),
+        );
+      });
 
+      _projects = loadedData;
+      notifyListeners();
+    } catch (error) {
+      throw (error);
+    }
+  }
 }
