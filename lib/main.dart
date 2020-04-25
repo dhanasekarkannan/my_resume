@@ -1,3 +1,4 @@
+import 'package:dhana_resume/provider/skills_provider.dart';
 import 'package:dhana_resume/provider/work_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,8 +14,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => WorkProvider(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => WorkProvider()),
+        ChangeNotifierProvider(create: (_) => SkillsProvider()),
+      ],
       child: MaterialApp(
         title: 'Dhana Resume',
         debugShowCheckedModeBanner: false,
@@ -35,30 +39,29 @@ class MyHomePage extends StatelessWidget {
       body: BlocProvider<SidebarNavigationBloc>(
         create: (context) => SidebarNavigationBloc(),
         child: Stack(
-                children: <Widget>[
-                  Container(
-                    height: double.infinity,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                        tileMode: TileMode.repeated,
-                        colors: [
-                          const Color(0xFF262AAA),
-                          const Color(0xFFE65258),
-                        ],
-                      ),
-                    ),
-                    child: 
-            BlocBuilder<SidebarNavigationBloc, NavigationStates>(
-                        builder: (context, navigationState) {
-                      return navigationState as Widget;
-                    }),
-                  ),
-                  // validation ? null : SidebarScreen(),
-                  validation ? AppValidationWidget() : SidebarScreen(),
-                ],
+          children: <Widget>[
+            Container(
+              height: double.infinity,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  tileMode: TileMode.repeated,
+                  colors: [
+                    const Color(0xFF262AAA),
+                    const Color(0xFFE65258),
+                  ],
+                ),
               ),
+              child: BlocBuilder<SidebarNavigationBloc, NavigationStates>(
+                  builder: (context, navigationState) {
+                return navigationState as Widget;
+              }),
+            ),
+            SidebarScreen(),
+            //validation ? AppValidationWidget() : SidebarScreen(),
+          ],
+        ),
       ),
     );
   }

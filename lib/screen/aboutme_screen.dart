@@ -27,7 +27,9 @@ class _AboutMeScreenState extends State<AboutMeScreen> {
       });
       if (_isLoading) {
         Provider.of<WorkProvider>(context).fetchAndSetWorks().then((_) {
-          _isLoading = false;
+          setState(() {
+            _isLoading = false;
+          });
         });
       }
     }
