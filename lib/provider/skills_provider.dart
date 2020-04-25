@@ -31,7 +31,6 @@ class SkillsProvider with ChangeNotifier {
     try {
       final response = await http.get(url);
       final extractedData = jsonDecode(response.body) as List;
-      print( jsonDecode(response.body) );
       final List<SkillsModel> loadedData = [];
       extractedData.forEach((workData) {
         loadedData.add(
