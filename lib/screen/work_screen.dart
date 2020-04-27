@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import '../bloc/sidebar_navigation_bloc.dart';
 import '../widget/project_widget.dart';
 import '../widget/barChart_widget.dart';
-import '../provider/project_providers.dart';
+import '../provider/project_provider.dart';
 import '../provider/skills_provider.dart';
 
 class WorkScreen extends StatefulWidget with NavigationStates {
