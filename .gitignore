@@ -20,9 +20,14 @@
 # is commented out by default.
 #.vscode/
 
+<<<<<<< HEAD
 
 #Android
 android/key.properties
+=======
+#Android
+/android/key.properties
+>>>>>>> preprod
 
 # Flutter/Dart/Pub related
 **/doc/api/

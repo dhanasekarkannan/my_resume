@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
-
-import '../model/work_model.dart';
-
+import 'package:url_launcher/url_launcher.dart';
 
 class UrlLinks {
-  static const profilePicURL =
-      "https://pbs.twimg.com/profile_images/1025219653084172288/IB6sMLR__400x400.jpg";
+  static const String profilePicURL =
+      "https://firebasestorage.googleapis.com/v0/b/dhanasekar-resume.appspot.com/o/MyProfileImg.jpg?alt=media&token=667e3e98-11b6-408f-848f-a1c3d72a3df6";
+  static const String firebaseURL = "https://dhanasekar-resume.firebaseio.com/";
+  static const String playStoreURL =
+      "https://play.google.com/store/apps/details?id=com.flutterProj.dhana_resume&hl=en_IN";
+}
+
+class AppDetails {
+  static const String androidVersion = '1.0.1';
 }
 
 class AppColors {
@@ -18,72 +23,12 @@ class Fonts {
   static const primaryFont = "Quicksand";
 }
 
-class WorkSample {
- static final  List<WorkData> workset = [
-    WorkData( 
-      workId: "1",
-      workName: "Acumen Innovations",
-      workDesg: "Software Engineer",
-      workStart: "Mar 2016",
-      workEnd: "Dec 2017",
-      workLoc: "Bangalore, Kenya, Dubai",
-      workLogoUrl:
-          "https://media-exp1.licdn.com/dms/image/C4E0BAQEe2Z_nU4IpEA/company-logo_200_200/0?e=1593648000&v=beta&t=94BlohLfLJPvAD3iGDW54N273nY5Vpqu0ZjdztU5kJI",
-    ),
-    WorkData( 
-      workId: "2",
-      workName: "Freelancer",
-      workDesg: "Software Developer",
-      workStart: "Jan 2018",
-      workEnd: "Dec 2018",
-      workLoc: "Chennai",
-      workLogoUrl:
-          'https://media-exp1.licdn.com/dms/image/C560BAQEJe-MEhPTm7w/company-logo_200_200/0?e=1593648000&v=beta&t=jwaVT0BDqUIqSjf_zMz-Vbps7sRkDqxLwxQl8MIlPUA',
-    ),
-    WorkData( 
-      workId: "3",
-      workName: "Virtusa Consulting",
-      workDesg: "Associate Consultant",
-      workStart: "Dec 2018",
-      workEnd: "Present",
-      workLoc: "Hyderabad",
-      workLogoUrl:
-          'https://media-exp1.licdn.com/dms/image/C4E0BAQEe2Z_nU4IpEA/company-logo_200_200/0?e=1593648000&v=beta&t=94BlohLfLJPvAD3iGDW54N273nY5Vpqu0ZjdztU5kJI',
-    )
-  ];
-}
-
-class SkillsSample {
-  static const skillset = [
-    {
-      "skillId": "1",
-      "skillName": "Flutter",
-      "skillScore": "9",
-      "skillVersion": "9",
-    },
-    {
-      "skillId": "1",
-      "skillName": "Node",
-      "skillScore": "9",
-      "skillVersion": "9",
-    },
-    {
-      "skillId": "1",
-      "skillName": "C, C++",
-      "skillScore": "9",
-      "skillVersion": "9",
-    },
-    {
-      "skillId": "1",
-      "skillName": "MySQL",
-      "skillScore": "9",
-      "skillVersion": "9",
-    },
-    {
-      "skillId": "1",
-      "skillName": "Swift",
-      "skillScore": "9",
-      "skillVersion": "9",
-    },
-  ];
+class Utils {
+  launchURL(url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
 }
