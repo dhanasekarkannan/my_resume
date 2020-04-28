@@ -1,5 +1,6 @@
 import 'package:dhana_resume/model/app_model.dart';
 import 'package:dhana_resume/screen/initial_screen.dart';
+import 'package:dhana_resume/utils/utils.dart';
 import 'package:flutter/material.dart';
 
 class AppValidationScreen extends StatelessWidget {
@@ -23,25 +24,47 @@ class AppValidationScreen extends StatelessWidget {
         ),
         child: Column(
           children: <Widget>[
-            Container(
-              child: Text(
-                  "How are tyih sfajkbfhjaghkfgkajg  hhksdgfhkagkj fas kjahsdfkja kjh f"),
+            Expanded(
+              child: Center(
+                child: Container(
+                  padding: EdgeInsets.all(20),
+                  child: 
+                  Text(
+                    _appData.updateMsg,
+                    style: TextStyle(color: Colors.amber),
+                  ),
+                ),
+              ),
             ),
-            RaisedButton(
-              child: Text("Remind Later"),
-              onPressed: () {
-                Navigator.push(
-      context,
-      // Create the SelectionScreen in the next step.
-      MaterialPageRoute(builder: (context) => InitialScreen()),
-    );
- 
-              },
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Row(
+                mainAxisAlignment: _appData.priority == "2"
+                    ? MainAxisAlignment.spaceAround
+                    : MainAxisAlignment.center,
+                children: <Widget>[
+                  _appData.priority == "2"
+                      ? RaisedButton(
+                          child: Text("Remind Later"),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => InitialScreen(),
+                              ),
+                            );
+                          },
+                        )
+                      : Container(),
+                  RaisedButton(
+                    child: Text("Update Now"),
+                    onPressed: () {
+                      Utils().launchURL(UrlLinks.playStoreURL);
+                    },
+                  ),
+                ],
+              ),
             ),
-            RaisedButton(
-              child: Text("Update Now"),
-              onPressed: () {},
-            )
           ],
         ),
       ),

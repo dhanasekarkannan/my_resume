@@ -100,8 +100,9 @@ class ContactScreen extends StatelessWidget with NavigationStates {
 // const whatsappUrl ="whatsapp://send?phone=+9173458510012";
     const whatsappUrl =
         "mailto:smith@example.org?subject=News&body=New%20plugin";
-    const callUrl = "tel:+91 7358510012";
+    // const callUrl = "tel:+91 7358510012";
     const smsUrl = "sms:+91 7358510012";
+    const callUrl = UrlLinks.playStoreURL;
 
     if (await canLaunch(callUrl)) {
       await launch(callUrl);

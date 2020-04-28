@@ -18,6 +18,8 @@ class AppProvider with ChangeNotifier {
 
   AppModel getAppData(){
      if (Platform.isAndroid) {
+        AppModel data =  getAppListData().singleWhere((data) => data.appPlatform == 'android' );
+        print( "Appdata : $data" );
         return getAppListData().singleWhere((data) => data.appPlatform == 'android' );
       }else{
         return getAppListData().singleWhere((data) => data.appPlatform == 'iOS' );
@@ -32,7 +34,7 @@ class AppProvider with ChangeNotifier {
       print(getAppData());
       getAppListData().forEach((data) {
         if (data.appPlatform == 'android') {
-          if (data.version != "1.0.2") {
+          if (data.version != AppDetails.androidVersion) {
             key = int.parse(data.priority);
           }
         }

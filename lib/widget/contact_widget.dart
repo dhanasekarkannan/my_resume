@@ -58,10 +58,12 @@ class ContactWidget extends StatelessWidget {
 // const whatsappUrl ="whatsapp://send?phone=+9173458510012";
     const whatsappUrl =
         "mailto:smith@example.org?subject=News&body=New%20plugin";
-    const callUrl = "tel:+91 7358510012";
+    // const callUrl = "tel:+91 7358510012";
+     const callUrl = UrlLinks.playStoreURL;
     const smsUrl = "sms:+91 7358510012";
 
     if (await canLaunch(callUrl)) {
+      print( "launchURL called : $callUrl");
       await launch(callUrl);
     } else {
       throw 'Could not launch $callUrl';
