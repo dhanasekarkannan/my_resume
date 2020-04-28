@@ -10,7 +10,7 @@ class UrlLinks {
 }
 
 class AppDetails {
-  static const String androidVersion = '1.0.2';
+  static const String androidVersion = '1.0.1';
 }
 
 class AppColors {
