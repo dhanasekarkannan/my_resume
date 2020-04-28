@@ -1,3 +1,4 @@
+import 'package:dhana_resume/model/project_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -89,8 +90,9 @@ class _WorkScreenState extends State<WorkScreen> {
                       offAxisFraction: _offAxisFraction,
                       itemExtent: 100,
                       children: <Widget>[
-                        for (int i = 0; i < projects.getProjects().length; i++)
-                          ProjectWidget(projects.getProject(i))
+                        for (ProjectModel project
+                            in projects.getProjects().reversed)
+                          ProjectWidget(project),
                       ],
                     );
                   },
