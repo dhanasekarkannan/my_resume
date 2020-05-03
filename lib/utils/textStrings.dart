@@ -12,8 +12,9 @@ class TextStrings {
   static const emailId = "sendmailtodhana@gmail.com";
   static const mobileNo = "+91 73585 10012";
 
-  static const String homeLat = "37.3230";
-  static const String homeLng = "-122.0312";
+
+  static const String homeLat = "13.121641";
+  static const String homeLng = "79.971483";
 
 
   

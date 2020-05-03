@@ -12,8 +12,30 @@ class ContactScreen extends StatelessWidget with NavigationStates {
       child: Container(
         padding: EdgeInsets.all(20),
         child: ListView(
+          shrinkWrap: true,
           padding: EdgeInsets.all(20),
           children: <Widget>[
+            RichText(
+              textAlign: TextAlign.center,
+              text: TextSpan(
+                style: DefaultTextStyle.of(context).style,
+                children: <TextSpan>[
+                  TextSpan(
+                      text: 'Contact Me\n',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 30,
+                          color: Colors.amber)),
+                  TextSpan(
+                    text: "You can connect with me through below links \n\n",
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              ),
+            ),
             _buildIconCard(
               FontAwesomeIcons.mapMarkerAlt,
               TextStrings.location,
@@ -80,5 +102,4 @@ class ContactScreen extends StatelessWidget with NavigationStates {
       },
     );
   }
-
 }

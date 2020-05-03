@@ -14,12 +14,10 @@ class UrlLinks {
   static const String callURL = "tel:+91 7358510012";
   static const String gitHubURL = "https://github.com/dhanasekarkannan";
   static const String emailURL =
-      "mailto:sendmailtodhana@gmail.com?subject=dhanasapp&body=Hi%Dhana";
+      "mailto:sendmailtodhana@gmail.com?subject=dhanasapp&body=Hi Dhana";
   static const String stackOverflowURL = "";
   static final String googleMapslocationUrl =
-  "https://www.google.com/maps/search/?api=1&center=${TextStrings.homeLat},${TextStrings.homeLng}";
-
-      // "comgooglemaps://?center=${TextStrings.homeLat},${TextStrings.homeLng}";
+      "https://www.google.com/maps/search/?api=1&query=${TextStrings.homeLat},${TextStrings.homeLng}";
 }
 
 class AppDetails {
@@ -38,8 +36,13 @@ class Fonts {
 
 class Utils {
   launchURL(url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
+    print('launch URL Passed : $url');
+
+ final String encodedURl = Uri.encodeFull(url);
+        print('launch URL Passed : $encodedURl');
+
+    if (await canLaunch(encodedURl)) {
+      await launch(encodedURl);
     } else {
       print('Could not launch $url');
       throw 'Could not launch $url';

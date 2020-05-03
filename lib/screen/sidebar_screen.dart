@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:dhana_resume/bloc/sidebar_navigation_bloc.dart';
+import 'package:dhana_resume/utils/utils.dart';
 import 'package:dhana_resume/widget/menu_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -93,6 +94,9 @@ class _SidebarScreenState extends State<SidebarScreen>
                                 style:
                                     TextStyle(fontSize: 15, color: Colors.blue),
                               ),
+                              onTap: (){
+                                Utils().launchURL(UrlLinks.emailURL);
+                              },
                             ),
                             Divider(
                               height: 3,
