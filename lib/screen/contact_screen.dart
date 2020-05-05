@@ -1,4 +1,5 @@
 import 'package:dhana_resume/utils/textStrings.dart';
+import 'package:dhana_resume/widget/customDialDialog_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -37,18 +38,21 @@ class ContactScreen extends StatelessWidget with NavigationStates {
               ),
             ),
             _buildIconCard(
+              context,
               FontAwesomeIcons.mapMarkerAlt,
               TextStrings.location,
               UrlLinks.googleMapslocationUrl,
             ),
             SizedBox(height: 10),
             _buildIconCard(
+              context,
               FontAwesomeIcons.phoneAlt,
               TextStrings.mobileNo,
               UrlLinks.callURL,
             ),
             SizedBox(height: 10),
             _buildIconCard(
+              context,
               FontAwesomeIcons.envelopeOpen,
               TextStrings.emailId,
               UrlLinks.emailURL,
@@ -59,12 +63,14 @@ class ContactScreen extends StatelessWidget with NavigationStates {
             ),
             SizedBox(height: 10),
             _buildIconCard(
+              context,
               FontAwesomeIcons.github,
               TextStrings.githubId,
               UrlLinks.gitHubURL,
             ),
             SizedBox(height: 10),
             _buildIconCard(
+              context,
               FontAwesomeIcons.linkedin,
               TextStrings.linkedInId,
               UrlLinks.linkedInURL,
@@ -76,7 +82,8 @@ class ContactScreen extends StatelessWidget with NavigationStates {
     );
   }
 
-  Widget _buildIconCard(IconData icon, String title, String launchURL) {
+  Widget _buildIconCard(
+      BuildContext context, IconData icon, String title, String launchURL) {
     return ListTile(
       leading: Container(
         height: 45.0,
@@ -98,7 +105,20 @@ class ContactScreen extends StatelessWidget with NavigationStates {
         ),
       ),
       onTap: () {
-        Utils().launchURL(launchURL);
+        if (title == TextStrings.mobileNo) {
+          print("Custom Dialog called");
+          showDialog(
+            context: context,
+            builder: (BuildContext context) => CustomDialDialogWidget(
+              title: "Contact",
+              description:
+                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+              buttonText: "Cancel",
+            ),
+          );
+        } else {
+          Utils().launchURL(launchURL);
+        }
       },
     );
   }

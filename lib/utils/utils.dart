@@ -20,6 +20,10 @@ class UrlLinks {
       "https://www.google.com/maps/search/?api=1&query=${TextStrings.homeLat},${TextStrings.homeLng}";
 }
 
+class Constants {
+  static const int timeoutSec = 30;
+}
+
 class AppDetails {
   static const String androidVersion = '1.0.1';
 }
@@ -36,11 +40,7 @@ class Fonts {
 
 class Utils {
   launchURL(url) async {
-    print('launch URL Passed : $url');
-
- final String encodedURl = Uri.encodeFull(url);
-        print('launch URL Passed : $encodedURl');
-
+    final String encodedURl = Uri.encodeFull(url);
     if (await canLaunch(encodedURl)) {
       await launch(encodedURl);
     } else {

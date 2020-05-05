@@ -79,10 +79,23 @@ class _MyHomePageState extends State<MyHomePage> {
           setState(() {
             _isLoading = false;
           });
+        }).catchError((e) {
+          print("error catched: ${e}");
+          _showAlert(context, e);
         });
       }
     }
     super.didChangeDependencies();
+  }
+
+  void _showAlert(BuildContext context, dynamic  description) {
+    showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) => AlertDialog(
+              title: Text("Alert"),
+              content: Text("${description}"),
+            ));
   }
 
   @override

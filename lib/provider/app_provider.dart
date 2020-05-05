@@ -16,22 +16,18 @@ class AppProvider with ChangeNotifier {
     return _appData;
   }
 
-  AppModel getAppData(){
-     if (Platform.isAndroid) {
-        AppModel data =  getAppListData().singleWhere((data) => data.appPlatform == 'android' );
-        print( "Appdata : $data" );
-        return getAppListData().singleWhere((data) => data.appPlatform == 'android' );
-      }else{
-        return getAppListData().singleWhere((data) => data.appPlatform == 'iOS' );
-      }
+  AppModel getAppData() {
+    if (Platform.isAndroid) {
+      return getAppListData()
+          .singleWhere((data) => data.appPlatform == 'android');
+    } else {
+      return getAppListData().singleWhere((data) => data.appPlatform == 'iOS');
+    }
   }
 
   int getVersionVaildation() {
     int key = 0;
-    print(Platform.isAndroid);
     if (Platform.isAndroid) {
-      print("getAppData");
-      print(getAppData());
       getAppListData().forEach((data) {
         if (data.appPlatform == 'android') {
           if (data.version != AppDetails.androidVersion) {
@@ -45,11 +41,9 @@ class AppProvider with ChangeNotifier {
 
   Future<void> fetchAndSetAppData() async {
     try {
-      final response = await http.get(url);
-      print(jsonDecode(response.body));
+      final response = await http.get(url).timeout( Duration(seconds: Constants.timeoutSec) );
       final extractedData = jsonDecode(response.body) as Map<String, dynamic>;
       final List<AppModel> loadedData = [];
-      print(jsonDecode(response.body));
       extractedData.forEach((appPlatform, appData) {
         loadedData.add(
           AppModel(
@@ -64,6 +58,7 @@ class AppProvider with ChangeNotifier {
       _appData = loadedData;
       notifyListeners();
     } catch (error) {
+      print('error ${error}');
       throw (error);
     }
   }
