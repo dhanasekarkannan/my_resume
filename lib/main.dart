@@ -1,6 +1,3 @@
-import 'package:dhana_resume/provider/project_provider.dart';
-import 'package:dhana_resume/provider/skills_provider.dart';
-import 'package:dhana_resume/provider/work_provider.dart';
 import 'package:dhana_resume/screen/appValidation_screen.dart';
 import 'package:dhana_resume/screen/initial_screen.dart';
 import './provider/app_provider.dart';
@@ -59,8 +56,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   bool _isLoading = true;
 
-  int _versionValidation = 0;
-
   @override
   void initState() {
     super.initState();
@@ -80,7 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
             _isLoading = false;
           });
         }).catchError((e) {
-          print("error catched: ${e}");
+          print("error catched: $e");
           _showAlert(context, e);
         });
       }
@@ -88,13 +83,13 @@ class _MyHomePageState extends State<MyHomePage> {
     super.didChangeDependencies();
   }
 
-  void _showAlert(BuildContext context, dynamic  description) {
+  void _showAlert(BuildContext context, dynamic description) {
     showDialog(
         context: context,
         barrierDismissible: false,
         builder: (context) => AlertDialog(
               title: Text("Alert"),
-              content: Text("${description}"),
+              content: Text("$description"),
             ));
   }
 
@@ -112,7 +107,7 @@ class _MyHomePageState extends State<MyHomePage> {
               )
             : Consumer<AppProvider>(builder: (ctx, appProvider, _) {
                 int key = appProvider.getVersionVaildation();
-                print("Key value got : ${key}");
+                print("Key value got : $key");
                 return key != 0
                     ? AppValidationScreen(appProvider.getAppData())
                     : InitialScreen();
