@@ -8,7 +8,7 @@ import '../utils/utils.dart';
 import 'dart:io' show Platform;
 
 class AppProvider with ChangeNotifier {
-  static const url = UrlLinks.firebaseURL + "/AppData.json";
+  static const url = UrlLinks.fbAppDataURL;
 
   List<AppModel> _appData;
 
@@ -30,6 +30,7 @@ class AppProvider with ChangeNotifier {
     if (Platform.isAndroid) {
       getAppListData().forEach((data) {
         if (data.appPlatform == 'android') {
+          print("App version from server: ${data.version}" );
           if (data.version != AppDetails.androidVersion) {
             key = int.parse(data.priority);
           }

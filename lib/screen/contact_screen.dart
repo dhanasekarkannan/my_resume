@@ -1,9 +1,10 @@
-import 'package:dhana_resume/utils/textStrings.dart';
-import 'package:dhana_resume/widget/customDialDialog_widget.dart';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../bloc/sidebar_navigation_bloc.dart';
+import '../widget/customDialDialog_widget.dart';
+import '../utils/textStrings.dart';
 import '../utils/utils.dart';
 
 class ContactScreen extends StatelessWidget with NavigationStates {
@@ -22,13 +23,13 @@ class ContactScreen extends StatelessWidget with NavigationStates {
                 style: DefaultTextStyle.of(context).style,
                 children: <TextSpan>[
                   TextSpan(
-                      text: 'Contact Me\n',
+                      text: '${TextStrings.contactMe}\n',
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 30,
                           color: Colors.amber)),
                   TextSpan(
-                    text: "You can connect with me through below links \n\n",
+                    text: "${TextStrings.contactMsg}\n\n",
                     style: TextStyle(
                       fontSize: 12,
                       color: Colors.white,
@@ -41,7 +42,7 @@ class ContactScreen extends StatelessWidget with NavigationStates {
               context,
               FontAwesomeIcons.mapMarkerAlt,
               TextStrings.location,
-              UrlLinks.googleMapslocationUrl,
+              UrlLinks.googleMapslocationURL,
             ),
             SizedBox(height: 10),
             _buildIconCard(
@@ -110,10 +111,10 @@ class ContactScreen extends StatelessWidget with NavigationStates {
           showDialog(
             context: context,
             builder: (BuildContext context) => CustomDialDialogWidget(
-              title: "Contact",
+              title: "${TextStrings.contactMe}" ,
               description:
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-              buttonText: "Cancel",
+                  "",
+              buttonText: "${TextStrings.alertCancel}",
             ),
           );
         } else {

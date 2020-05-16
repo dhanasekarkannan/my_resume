@@ -75,7 +75,6 @@ class _MyHomePageState extends State<MyHomePage> {
             _isLoading = false;
           });
         }).catchError((e) {
-          print("error catched: $e");
           _showAlert(context, e);
         });
       }
@@ -107,7 +106,6 @@ class _MyHomePageState extends State<MyHomePage> {
               )
             : Consumer<AppProvider>(builder: (ctx, appProvider, _) {
                 int key = appProvider.getVersionVaildation();
-                print("Key value got : $key");
                 return key != 0
                     ? AppValidationScreen(appProvider.getAppData())
                     : InitialScreen();

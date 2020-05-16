@@ -1,8 +1,9 @@
 import 'dart:async';
 
-import 'package:dhana_resume/bloc/sidebar_navigation_bloc.dart';
-import 'package:dhana_resume/utils/utils.dart';
-import 'package:dhana_resume/widget/menu_widget.dart';
+import '../utils/textStrings.dart';
+import '../bloc/sidebar_navigation_bloc.dart';
+import '../utils/utils.dart';
+import '../widget/menu_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rxdart/rxdart.dart';
@@ -83,14 +84,14 @@ class _SidebarScreenState extends State<SidebarScreen>
                                   // ),
                                   ),
                               title: Text(
-                                "Dhanasekar",
+                                TextStrings.name,
                                 style: TextStyle(
                                     fontSize: 30,
                                     fontWeight: FontWeight.w700,
                                     color: const Color(0xFF262AAA)),
                               ),
                               subtitle: Text(
-                                "sendmailtodhana@gmail.com",
+                                TextStrings.emailId,
                                 style:
                                     TextStyle(fontSize: 15, color: Colors.blue),
                               ),
@@ -103,7 +104,7 @@ class _SidebarScreenState extends State<SidebarScreen>
                               color: Colors.transparent,
                             ),
                             MenuWidget(
-                              title: "Home",
+                              title: TextStrings.home,
                               icon: Icons.home,
                               onTap: () {
                                 onIconPressed();
@@ -118,7 +119,7 @@ class _SidebarScreenState extends State<SidebarScreen>
                               color: Colors.blue.withOpacity(0.5),
                             ),
                             MenuWidget(
-                              title: "About Me",
+                              title: TextStrings.aboutMe,
                               icon: Icons.perm_contact_calendar,
                               onTap: () {
                                 onIconPressed();
@@ -133,7 +134,7 @@ class _SidebarScreenState extends State<SidebarScreen>
                               color: Colors.blue.withOpacity(0.5),
                             ),
                             MenuWidget(
-                              title: "Work",
+                              title: TextStrings.work,
                               icon: Icons.laptop_windows,
                               onTap: () {
                                 onIconPressed();
@@ -178,7 +179,7 @@ class _SidebarScreenState extends State<SidebarScreen>
                             //   color: Colors.blue.withOpacity(0.5),
                             // ),
                             MenuWidget(
-                              title: "Contact",
+                              title: TextStrings.contactMe,
                               icon: Icons.contact_phone,
                               onTap: () {
                                 onIconPressed();

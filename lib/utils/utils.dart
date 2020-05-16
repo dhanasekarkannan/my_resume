@@ -8,16 +8,22 @@ class UrlLinks {
   static const String firebaseURL = "https://dhanasekar-resume.firebaseio.com/";
   static const String playStoreURL =
       "https://play.google.com/store/apps/details?id=com.flutterProj.dhana_resume&hl=en_IN";
-  static const String linkedInURL = "https://www.linkedin.com/in/dhanasekar/";
-  static const String whatsappURL = "whatsapp://send?phone=+917358510012";
-  static const String messageURL = "sms:+91 7358510012";
-  static const String callURL = "tel:+91 7358510012";
-  static const String gitHubURL = "https://github.com/dhanasekarkannan";
-  static const String emailURL =
-      "mailto:sendmailtodhana@gmail.com?subject=dhanasapp&body=Hi Dhana";
-  static const String stackOverflowURL = "";
-  static final String googleMapslocationUrl =
+  static const String linkedInURL =
+      "https://www.linkedin.com/in/${TextStrings.linkedInId}/";
+  static const String whatsappURL =
+      "whatsapp://send?phone=${TextStrings.whatsappNo}";
+  static final String messageURL = "sms:${TextStrings.mobileNo}";
+  static final String callURL = "tel:${TextStrings.mobileNo}";
+  static final String gitHubURL = "https://github.com/${TextStrings.githubId}";
+  static final String emailURL =
+      "mailto:${TextStrings.emailId}?subject=${TextStrings.emailSubject}&body=${TextStrings.emailBody}";
+  static final String stackOverflowURL = "";
+  static final String googleMapslocationURL =
       "https://www.google.com/maps/search/?api=1&query=${TextStrings.homeLat},${TextStrings.homeLng}";
+  static const String fbAppDataURL = firebaseURL + "/AppData.json";
+  static const String fbProjectDataURL = firebaseURL + "/ProjectData.json";
+  static const String fbSkillDataURL = firebaseURL + "/SkillData.json";
+  static const String fbWorkDataURL = firebaseURL + "/WorkData.json";
 }
 
 class Constants {
@@ -25,7 +31,7 @@ class Constants {
 }
 
 class AppDetails {
-  static const String androidVersion = '1.2.0';
+  static const String androidVersion = '1.0.1';
 }
 
 class AppColors {
@@ -44,7 +50,6 @@ class Utils {
     if (await canLaunch(encodedURl)) {
       await launch(encodedURl);
     } else {
-      print('Could not launch $url');
       throw 'Could not launch $url';
     }
   }

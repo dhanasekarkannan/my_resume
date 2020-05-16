@@ -1,6 +1,4 @@
-import 'package:dhana_resume/provider/project_provider.dart';
-import 'package:dhana_resume/provider/skills_provider.dart';
-import 'package:dhana_resume/provider/work_provider.dart';
+
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,6 +7,9 @@ import 'package:provider/provider.dart';
 
 import '../bloc/sidebar_navigation_bloc.dart';
 import '../screen/sidebar_screen.dart';
+import '../provider/project_provider.dart';
+import '../provider/skills_provider.dart';
+import '../provider/work_provider.dart';
 
 class InitialScreen extends StatefulWidget {
   @override

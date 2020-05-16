@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 import '../bloc/sidebar_navigation_bloc.dart';
 import '../widget/timeLine_widget.dart';
 import '../provider/work_provider.dart';
+import '../utils/textStrings.dart';
+
 
 class AboutMeScreen extends StatefulWidget with NavigationStates {
   @override
@@ -54,14 +56,14 @@ class _AboutMeScreenState extends State<AboutMeScreen> {
                   style: DefaultTextStyle.of(context).style,
                   children: <TextSpan>[
                     TextSpan(
-                        text: 'About Me\n\n',
+                        text: '${TextStrings.aboutMe}\n\n',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 30,
                             color: Colors.amber)),
                     TextSpan(
                       text:
-                          "In my quest for growth I enjoy grabbing opportunities to explore and collaborate with people across the globe. I'm passionate about my work and I’m always interested in hearing from interesting creative folk. ",
+                          TextStrings.aboutMeMsg,
                       style: TextStyle(
                         fontSize: 12,
                         color: Colors.white,

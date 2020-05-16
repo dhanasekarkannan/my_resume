@@ -7,7 +7,7 @@ import '../model/skills_model.dart';
 import '../utils/utils.dart';
 
 class SkillsProvider with ChangeNotifier {
-  static const url = UrlLinks.firebaseURL + "/SkillData.json";
+  static const url = UrlLinks.fbSkillDataURL;
 
   List<SkillsModel> _skills = [];
 

@@ -1,10 +1,9 @@
 import 'dart:async';
 import 'dart:math';
 
-import 'package:dhana_resume/model/skills_model.dart';
+import 'package:dhana_resume/utils/textStrings.dart';
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
-import 'package:provider/provider.dart';
 
 import '../provider/skills_provider.dart';
 
@@ -55,7 +54,7 @@ class BarChartWidgetState extends State<BarChartWidget> {
                 mainAxisSize: MainAxisSize.max,
                 children: <Widget>[
                   Text(
-                    'Skills',
+                    TextStrings.skills,
                     style: TextStyle(
                         color: const Color(0xff0f4a3c),
                         fontSize: 24,

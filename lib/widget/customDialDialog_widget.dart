@@ -1,3 +1,4 @@
+import 'package:dhana_resume/utils/textStrings.dart';
 import 'package:dhana_resume/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -27,7 +28,7 @@ class CustomDialDialogWidget extends StatelessWidget {
 
   Widget _buildCustomIconButton(String title, IconData icon, String launchUrl) {
     return Expanded(
-          child: Column(
+      child: Column(
         children: <Widget>[
           RawMaterialButton(
             onPressed: () {
@@ -93,12 +94,12 @@ class CustomDialDialogWidget extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
-                  _buildCustomIconButton(
-                      "Call", FontAwesomeIcons.phoneAlt, UrlLinks.callURL),
-                  _buildCustomIconButton("Whatsapp", FontAwesomeIcons.whatsapp,
-                      UrlLinks.whatsappURL),
-                  _buildCustomIconButton("Message", FontAwesomeIcons.comments,
-                      UrlLinks.messageURL),
+                  _buildCustomIconButton(TextStrings.call,
+                      FontAwesomeIcons.phoneAlt, UrlLinks.callURL),
+                  _buildCustomIconButton(TextStrings.whatsapp,
+                      FontAwesomeIcons.whatsapp, UrlLinks.whatsappURL),
+                  _buildCustomIconButton(TextStrings.message,
+                      FontAwesomeIcons.comments, UrlLinks.messageURL),
                 ],
               ),
               SizedBox(height: 10.0),

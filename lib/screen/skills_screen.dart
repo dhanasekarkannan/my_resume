@@ -1,5 +1,5 @@
-import 'package:dhana_resume/model/skills_model.dart';
-import 'package:dhana_resume/provider/skills_provider.dart';
+import '../model/skills_model.dart';
+import '../provider/skills_provider.dart';
 import 'package:flutter/material.dart';
 
 import '../bloc/sidebar_navigation_bloc.dart';

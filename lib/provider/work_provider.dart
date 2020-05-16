@@ -1,13 +1,14 @@
 import 'dart:convert';
 
-import 'package:dhana_resume/model/work_model.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/foundation.dart';
 
 import '../utils/utils.dart';
+import '../model/work_model.dart';
+
 
 class WorkProvider with ChangeNotifier {
-  static const url = UrlLinks.firebaseURL + "/WorkData.json";
+  static const url = UrlLinks.fbWorkDataURL;
 
   List<WorkModel> _works;
 

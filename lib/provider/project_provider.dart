@@ -7,7 +7,7 @@ import '../model/project_model.dart';
 import '../utils/utils.dart';
 
 class ProjectProvider with ChangeNotifier {
-  static const url = UrlLinks.firebaseURL + "/ProjectData.json";
+  static const url = UrlLinks.fbProjectDataURL;
 
   List<ProjectModel> _projects;
 
