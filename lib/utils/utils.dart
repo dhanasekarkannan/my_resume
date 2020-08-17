@@ -17,7 +17,7 @@ class UrlLinks {
   static final String gitHubURL = "https://github.com/${TextStrings.githubId}";
   static final String emailURL =
       "mailto:${TextStrings.emailId}?subject=${TextStrings.emailSubject}&body=${TextStrings.emailBody}";
-  static final String stackOverflowURL = "";
+  static const String stackOverflowURL = "https://api.stackexchange.com/2.2/users/3726510?order=desc&sort=reputation&site=stackoverflow";
   static final String googleMapslocationURL =
       "https://www.google.com/maps/search/?api=1&query=${TextStrings.homeLat},${TextStrings.homeLng}";
   static const String fbAppDataURL = firebaseURL + "/AppData.json";

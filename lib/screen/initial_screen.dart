@@ -1,9 +1,7 @@
-
-
+import 'package:dhana_resume/provider/personal_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
-
 
 import '../bloc/sidebar_navigation_bloc.dart';
 import '../screen/sidebar_screen.dart';
@@ -21,11 +19,12 @@ class _InitialScreenState extends State<InitialScreen> {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider(create: (_) => PersonalProvider()),
         ChangeNotifierProvider(create: (_) => WorkProvider()),
         ChangeNotifierProvider(create: (_) => SkillsProvider()),
         ChangeNotifierProvider(create: (_) => ProjectProvider()),
       ],
-          child: Scaffold(
+      child: Scaffold(
         body: BlocProvider<SidebarNavigationBloc>(
             create: (context) => SidebarNavigationBloc(),
             child: Stack(
