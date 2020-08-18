@@ -31,7 +31,7 @@ class PersonalProvider with ChangeNotifier {
       _personalData = loadedData;
       notifyListeners();
     } catch (error) {
-      print('error ${error}');
+      print('error $error');
       throw (error);
     }
   }

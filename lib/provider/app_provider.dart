@@ -59,7 +59,7 @@ class AppProvider with ChangeNotifier {
       _appData = loadedData;
       notifyListeners();
     } catch (error) {
-      print('error ${error}');
+      print('error $error');
       throw (error);
     }
   }

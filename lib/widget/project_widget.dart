@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:dhana_resume/model/project_model.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +20,7 @@ class ProjectWidget extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(10),
         child: Container(
-          color: colors[ int.parse(_project.projId) % colors.length],
+          color: colors[int.parse(_project.projId) % colors.length],
           child: Center(
             child: ListTile(
               title: Text(

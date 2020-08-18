@@ -1,4 +1,3 @@
-import 'package:dhana_resume/model/personal_model.dart';
 import 'package:dhana_resume/provider/personal_provider.dart';
 import 'package:dhana_resume/utils/textStrings.dart';
 import 'package:flutter/material.dart';

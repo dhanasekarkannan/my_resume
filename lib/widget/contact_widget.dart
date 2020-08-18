@@ -8,7 +8,6 @@ class ContactWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      
       // margin: EdgeInsets.only(left: 30, right: 20),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -53,16 +52,10 @@ class ContactWidget extends StatelessWidget {
   }
 
   _launchURL() async {
-    // const url = 'https://flutter.dev//';
-// const whatsappUrl ="whatsapp://send?phone=+9173458510012";
-    const whatsappUrl =
-        "mailto:smith@example.org?subject=News&body=New%20plugin";
-    // const callUrl = "tel:+91 7358510012";
-     const callUrl = UrlLinks.playStoreURL;
-    const smsUrl = "sms:+91 7358510012";
+    const callUrl = UrlLinks.playStoreURL;
 
     if (await canLaunch(callUrl)) {
-      print( "launchURL called : $callUrl");
+      print("launchURL called : $callUrl");
       await launch(callUrl);
     } else {
       throw 'Could not launch $callUrl';

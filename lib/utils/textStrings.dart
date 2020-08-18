@@ -3,7 +3,7 @@ class TextStrings {
   static const String contactMe = 'Contact  Me';
   static const String aboutMe = 'About Me';
   static const String passion = 'Passion';
-  static const String work = 'Passion';
+  static const String work = 'Projects';
   static const String skills = 'Skills';
   static const String hobby = 'Hobbies';
   static const String home = 'Home';
