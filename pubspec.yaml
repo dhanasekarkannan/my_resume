@@ -27,6 +27,7 @@ dependencies:
   firebase_core: ^0.4.0+9
   firebase_messaging: ^6.0.13
   provider: ^4.0.5
+  package_info: ^0.4.3
 
 
 

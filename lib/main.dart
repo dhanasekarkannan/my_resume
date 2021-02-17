@@ -104,7 +104,19 @@ class _MyHomePageState extends State<MyHomePage> {
                   valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
                 ),
               )
-            : Consumer<AppProvider>(builder: (ctx, appProvider, _) {
+            : Consumer<AppProvider>(builder: (ctx, appProvider, _)  {
+                FutureBuilder<int>(
+                    future: appProvider.getVersionVaildation,
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState != ConnectionState.done) {
+                        return Text("Loading tasks...");
+                      }
+
+                      final tasks = snapshot.data;
+
+                      // ...
+                    }
+                  );
                 int key = appProvider.getVersionVaildation();
                 return key != 0
                     ? AppValidationScreen(appProvider.getAppData())
