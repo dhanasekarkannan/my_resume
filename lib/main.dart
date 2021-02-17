@@ -105,10 +105,25 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               )
             : Consumer<AppProvider>(builder: (ctx, appProvider, _) {
-                int key = appProvider.getVersionVaildation();
-                return key != 0
-                    ? AppValidationScreen(appProvider.getAppData())
-                    : InitialScreen();
+                return FutureBuilder<int>(
+                    future: appProvider.getVersionVaildation(),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState != ConnectionState.done) {
+                        return Center(
+                          child: CircularProgressIndicator(
+                            semanticsValue: "Hey!! fellas!!",
+                            backgroundColor: Colors.amber,
+                            valueColor:
+                                AlwaysStoppedAnimation<Color>(Colors.white),
+                          ),
+                        );
+                      }
+
+                      return snapshot.data != 0
+                          ? AppValidationScreen(appProvider.getAppData())
+                          : InitialScreen();
+                      // ...
+                    });
               }),
       ),
     );

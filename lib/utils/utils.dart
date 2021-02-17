@@ -31,7 +31,7 @@ class Constants {
 }
 
 class AppDetails {
-  static const String androidVersion = '1.0.1';
+  static const String androidVersion = '1.0.2';
 }
 
 class AppColors {

@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:flutter/foundation.dart';
+import 'package:package_info/package_info.dart';
 
 import '../model/app_model.dart';
 import '../utils/utils.dart';
@@ -25,24 +26,30 @@ class AppProvider with ChangeNotifier {
     }
   }
 
-  int getVersionVaildation() {
+  Future<PackageInfo> _getPackageInfo() async {
+    final PackageInfo info = await PackageInfo.fromPlatform();
+    return info;
+  }
+
+  Future<int> getVersionVaildation() async {
     int key = 0;
     if (Platform.isAndroid) {
-      getAppListData().forEach((data) {
-        if (data.appPlatform == 'android') {
-          print("App version from server: ${data.version}" );
-          if (data.version != AppDetails.androidVersion) {
-            key = int.parse(data.priority);
-          }
-        }
-      });
+      final appData =
+          getAppListData().singleWhere((data) => data.appPlatform == 'android');
+      PackageInfo _packageInfo = await _getPackageInfo();
+      print("App version from server: ${appData.version}");
+      print("Package version from server: ${_packageInfo.version}");
+      if (appData.version != _packageInfo.version) {
+        key = int.parse(appData.priority);
+      }
     }
     return key;
   }
 
   Future<void> fetchAndSetAppData() async {
     try {
-      final response = await http.get(url).timeout( Duration(seconds: Constants.timeoutSec) );
+      final response =
+          await http.get(url).timeout(Duration(seconds: Constants.timeoutSec));
       final extractedData = jsonDecode(response.body) as Map<String, dynamic>;
       final List<AppModel> loadedData = [];
       extractedData.forEach((appPlatform, appData) {
