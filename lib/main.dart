@@ -104,23 +104,26 @@ class _MyHomePageState extends State<MyHomePage> {
                   valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
                 ),
               )
-            : Consumer<AppProvider>(builder: (ctx, appProvider, _)  {
-                FutureBuilder<int>(
-                    future: appProvider.getVersionVaildation,
+            : Consumer<AppProvider>(builder: (ctx, appProvider, _) {
+                return FutureBuilder<int>(
+                    future: appProvider.getVersionVaildation(),
                     builder: (context, snapshot) {
                       if (snapshot.connectionState != ConnectionState.done) {
-                        return Text("Loading tasks...");
+                        return Center(
+                          child: CircularProgressIndicator(
+                            semanticsValue: "Hey!! fellas!!",
+                            backgroundColor: Colors.amber,
+                            valueColor:
+                                AlwaysStoppedAnimation<Color>(Colors.white),
+                          ),
+                        );
                       }
 
-                      final tasks = snapshot.data;
-
+                      return snapshot.data != 0
+                          ? AppValidationScreen(appProvider.getAppData())
+                          : InitialScreen();
                       // ...
-                    }
-                  );
-                int key = appProvider.getVersionVaildation();
-                return key != 0
-                    ? AppValidationScreen(appProvider.getAppData())
-                    : InitialScreen();
+                    });
               }),
       ),
     );
