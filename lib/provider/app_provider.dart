@@ -18,30 +18,48 @@ class AppProvider with ChangeNotifier {
   }
 
   AppModel getAppData() {
-    if (Platform.isAndroid) {
+    try {
+      if (Platform.isAndroid) {
+        return getAppListData()
+            .singleWhere((data) => data.appPlatform == 'android');
+      } else {
+        return getAppListData()
+            .singleWhere((data) => data.appPlatform == 'iOS');
+      }
+    } catch (e) {
       return getAppListData()
           .singleWhere((data) => data.appPlatform == 'android');
-    } else {
-      return getAppListData().singleWhere((data) => data.appPlatform == 'iOS');
     }
   }
 
   Future<PackageInfo> _getPackageInfo() async {
+    print("bfr package info ");
     final PackageInfo info = await PackageInfo.fromPlatform();
+    print("after package info");
+
     return info;
   }
 
   Future<int> getVersionVaildation() async {
+    print("web test inside");
+
     int key = 0;
-    if (Platform.isAndroid) {
-      final appData =
-          getAppListData().singleWhere((data) => data.appPlatform == 'android');
-      PackageInfo _packageInfo = await _getPackageInfo();
-      print("App version from server: ${appData.version}");
-      print("Package version from server: ${_packageInfo.version}");
-      if (appData.version != _packageInfo.version) {
-        key = int.parse(appData.priority);
+    try {
+      print("web test inside");
+      if (Platform.isAndroid) {
+        print("web test inside");
+
+        final appData = getAppListData()
+            .singleWhere((data) => data.appPlatform == 'android');
+        PackageInfo _packageInfo = await _getPackageInfo();
+        print("App version from server: ${appData.version}");
+        print("Package version from server: ${_packageInfo.version}");
+        if (appData.version != _packageInfo.version) {
+          key = int.parse(appData.priority);
+        }
       }
+    } catch (e) {
+      return key;
     }
     return key;
   }
