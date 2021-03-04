@@ -10,12 +10,12 @@ class AppValidationScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        height: double.infinity,
+        height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            tileMode: TileMode.repeated,
+            // tileMode: TileMode.repeated,
             colors: [
               const Color(0xFF262AAA),
               const Color(0xFFE65258),
