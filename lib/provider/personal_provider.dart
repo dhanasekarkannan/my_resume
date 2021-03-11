@@ -7,7 +7,7 @@ import 'package:flutter/foundation.dart';
 import '../utils/utils.dart';
 
 class PersonalProvider with ChangeNotifier {
-  static const url = UrlLinks.stackOverflowURL;
+  static Uri url = Uri.parse(UrlLinks.stackOverflowURL);
 
   PersonalModel _personalData;
 

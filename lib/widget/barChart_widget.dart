@@ -117,12 +117,12 @@ class BarChartWidgetState extends State<BarChartWidget> {
       barRods: [
         BarChartRodData(
           y: isTouched ? y + 1 : y,
-          color: isTouched ? Colors.yellow : barColor,
+          colors: isTouched ? [Colors.yellow] : [barColor],
           width: width,
           backDrawRodData: BackgroundBarChartRodData(
             show: true,
             y: 10,
-            color: barBackgroundColor,
+            colors: [barBackgroundColor],
           ),
         ),
       ],
@@ -163,14 +163,16 @@ class BarChartWidgetState extends State<BarChartWidget> {
         show: true,
         bottomTitles: SideTitles(
           showTitles: true,
-          textStyle: TextStyle(
-              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 14),
+          getTextStyles: (double value) {
+            return TextStyle(
+                color: Colors.white, fontWeight: FontWeight.bold, fontSize: 14);
+          },
           margin: 16,
           getTitles: (double value) {
             return widget._skills.getSkillKey(value.toInt());
           },
         ),
-        leftTitles: const SideTitles(
+        leftTitles: SideTitles(
           showTitles: false,
         ),
       ),
@@ -183,21 +185,23 @@ class BarChartWidgetState extends State<BarChartWidget> {
 
   BarChartData randomData() {
     return BarChartData(
-      barTouchData: const BarTouchData(
+      barTouchData: BarTouchData(
         enabled: false,
       ),
       titlesData: FlTitlesData(
         show: true,
         bottomTitles: SideTitles(
           showTitles: true,
-          textStyle: TextStyle(
-              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 14),
+          getTextStyles: (double value) {
+            return TextStyle(
+                color: Colors.white, fontWeight: FontWeight.bold, fontSize: 14);
+          },
           margin: 16,
           getTitles: (double value) {
             return widget._skills.getSkillKey(value.toInt());
           },
         ),
-        leftTitles: const SideTitles(
+        leftTitles:  SideTitles(
           showTitles: false,
         ),
       ),

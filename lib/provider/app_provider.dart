@@ -9,7 +9,7 @@ import '../utils/utils.dart';
 import 'dart:io' show Platform;
 
 class AppProvider with ChangeNotifier {
-  static const url = UrlLinks.fbAppDataURL;
+  static Uri url = Uri.parse(UrlLinks.fbAppDataURL);
 
   List<AppModel> _appData;
 

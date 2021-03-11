@@ -7,7 +7,7 @@ import '../model/skills_model.dart';
 import '../utils/utils.dart';
 
 class SkillsProvider with ChangeNotifier {
-  static const url = UrlLinks.fbSkillDataURL;
+  static Uri url = Uri.parse(UrlLinks.fbSkillDataURL);
 
   List<SkillsModel> _skills = [];
 

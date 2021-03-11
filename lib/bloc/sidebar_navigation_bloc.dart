@@ -19,8 +19,7 @@ enum NavigationEvents {
 abstract class NavigationStates {}
 
 class SidebarNavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
-  @override
-  NavigationStates get initialState => HomeScreen();
+  SidebarNavigationBloc() : super(HomeScreen());
 
   @override
   Stream<NavigationStates> mapEventToState(NavigationEvents event) async* {

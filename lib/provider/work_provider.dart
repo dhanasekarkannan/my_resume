@@ -8,7 +8,7 @@ import '../model/work_model.dart';
 
 
 class WorkProvider with ChangeNotifier {
-  static const url = UrlLinks.fbWorkDataURL;
+  static Uri url = Uri.parse(UrlLinks.fbWorkDataURL);
 
   List<WorkModel> _works;
 
