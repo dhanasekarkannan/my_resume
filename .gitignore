@@ -38,6 +38,7 @@ android/key.properties
 .pub-cache/
 .pub/
 /build/
+*.lock
 
 # Web related
 lib/generated_plugin_registrant.dart
