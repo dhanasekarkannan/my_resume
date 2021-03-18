@@ -15,16 +15,16 @@ class SkillsProvider with ChangeNotifier {
     return _skills;
   }
 
-  String getSkillKey(int index) {
+  String? getSkillKey(int index) {
     return _skills[index].skillKey;
   }
 
-  String getSkillTitle(int index) {
+  String? getSkillTitle(int index) {
     return _skills[index].skillTitle;
   }
 
   double getSkillPercentDouble(int index) {
-    return double.parse(_skills[index].skillPercnt);
+    return double.parse(_skills[index].skillPercnt!);
   }
 
   Future<void> fetchAndSetSkills() async {

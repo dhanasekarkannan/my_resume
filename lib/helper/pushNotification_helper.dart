@@ -15,7 +15,7 @@ class PushNotificationHelper {
       await Firebase.initializeApp();
 
       // For testing purposes print the Firebase Messaging token
-      String token = await FirebaseMessaging.instance.getAPNSToken();
+      String? token = await FirebaseMessaging.instance.getAPNSToken();
       print("FirebaseMessaging token: $token");
 
       _initialized = true;

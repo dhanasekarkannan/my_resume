@@ -30,7 +30,7 @@ class AppValidationScreen extends StatelessWidget {
                   padding: EdgeInsets.all(20),
                   child: 
                   Text(
-                    _appData.updateMsg,
+                    _appData.updateMsg!,
                     style: TextStyle(color: Colors.amber),
                   ),
                 ),
@@ -44,7 +44,7 @@ class AppValidationScreen extends StatelessWidget {
                     : MainAxisAlignment.center,
                 children: <Widget>[
                   _appData.priority == "2"
-                      ? RaisedButton(
+                      ? ElevatedButton(
                           child: Text("Remind Later"),
                           onPressed: () {
                             Navigator.push(
@@ -56,7 +56,7 @@ class AppValidationScreen extends StatelessWidget {
                           },
                         )
                       : Container(),
-                  RaisedButton(
+                  ElevatedButton(
                     child: Text("Update Now"),
                     onPressed: () {
                       Utils().launchURL(UrlLinks.playStoreURL);

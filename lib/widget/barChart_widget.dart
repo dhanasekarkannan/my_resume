@@ -30,7 +30,7 @@ class BarChartWidgetState extends State<BarChartWidget> {
   final Color barBackgroundColor = const Color(0xff72d8bf);
   final Duration animDuration = Duration(milliseconds: 250);
 
-  int touchedIndex;
+  int? touchedIndex;
 
   bool isPlaying = false;
 
@@ -142,9 +142,9 @@ class BarChartWidgetState extends State<BarChartWidget> {
         touchTooltipData: BarTouchTooltipData(
             tooltipBgColor: Colors.blueGrey,
             getTooltipItem: (group, groupIndex, rod, rodIndex) {
-              String title;
+              String? title;
               title = widget._skills.getSkillTitle(group.x.toInt());
-              return BarTooltipItem(title + '\n' + (rod.y - 1).toString(),
+              return BarTooltipItem(title! + '\n' + (rod.y - 1).toString(),
                   TextStyle(color: Colors.yellow));
             }),
         touchCallback: (barTouchResponse) {
@@ -152,7 +152,7 @@ class BarChartWidgetState extends State<BarChartWidget> {
             if (barTouchResponse.spot != null &&
                 barTouchResponse.touchInput is! FlPanEnd &&
                 barTouchResponse.touchInput is! FlLongPressEnd) {
-              touchedIndex = barTouchResponse.spot.touchedBarGroupIndex;
+              touchedIndex = barTouchResponse.spot!.touchedBarGroupIndex;
             } else {
               touchedIndex = -1;
             }
@@ -169,7 +169,7 @@ class BarChartWidgetState extends State<BarChartWidget> {
           },
           margin: 16,
           getTitles: (double value) {
-            return widget._skills.getSkillKey(value.toInt());
+            return widget._skills.getSkillKey(value.toInt())!;
           },
         ),
         leftTitles: SideTitles(
@@ -198,7 +198,7 @@ class BarChartWidgetState extends State<BarChartWidget> {
           },
           margin: 16,
           getTitles: (double value) {
-            return widget._skills.getSkillKey(value.toInt());
+            return widget._skills.getSkillKey(value.toInt())!;
           },
         ),
         leftTitles:  SideTitles(

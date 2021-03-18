@@ -1,4 +1,4 @@
-import 'dart:convert';
+import 'dart:convert' as json;
 
 import 'package:dhana_resume/model/personal_model.dart';
 import 'package:http/http.dart' as http;
@@ -9,9 +9,9 @@ import '../utils/utils.dart';
 class PersonalProvider with ChangeNotifier {
   static Uri url = Uri.parse(UrlLinks.stackOverflowURL);
 
-  PersonalModel _personalData;
+  PersonalModel? _personalData;
 
-  PersonalModel getAppData() {
+  PersonalModel? getAppData() {
     return _personalData;
   }
 
@@ -19,7 +19,7 @@ class PersonalProvider with ChangeNotifier {
     try {
       final response =
           await http.get(url).timeout(Duration(seconds: Constants.timeoutSec));
-      final extractedData = jsonDecode(response.body) as Map<String, dynamic>;
+      final extractedData = json.jsonDecode(response.body) as Map<String, dynamic>;
       PersonalModel loadedData;
 
       loadedData = PersonalModel(

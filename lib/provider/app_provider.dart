@@ -11,23 +11,23 @@ import 'dart:io' show Platform;
 class AppProvider with ChangeNotifier {
   static Uri url = Uri.parse(UrlLinks.fbAppDataURL);
 
-  List<AppModel> _appData;
+  List<AppModel>? _appData;
 
-  List<AppModel> getAppListData() {
+  List<AppModel>? getAppListData() {
     return _appData;
   }
 
   AppModel getAppData() {
     try {
       if (Platform.isAndroid) {
-        return getAppListData()
+        return getAppListData()!
             .singleWhere((data) => data.appPlatform == 'android');
       } else {
-        return getAppListData()
+        return getAppListData()!
             .singleWhere((data) => data.appPlatform == 'iOS');
       }
     } catch (e) {
-      return getAppListData()
+      return getAppListData()!
           .singleWhere((data) => data.appPlatform == 'android');
     }
   }
@@ -49,13 +49,13 @@ class AppProvider with ChangeNotifier {
       if (Platform.isAndroid) {
         print("web test inside");
 
-        final appData = getAppListData()
+        final appData = getAppListData()!
             .singleWhere((data) => data.appPlatform == 'android');
         PackageInfo _packageInfo = await _getPackageInfo();
         print("App version from server: ${appData.version}");
         print("Package version from server: ${_packageInfo.version}");
         if (appData.version != _packageInfo.version) {
-          key = int.parse(appData.priority);
+          key = int.parse(appData.priority!);
         }
       }
     } catch (e) {

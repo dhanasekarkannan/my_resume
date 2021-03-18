@@ -9,14 +9,14 @@ import '../utils/utils.dart';
 class ProjectProvider with ChangeNotifier {
   static Uri url = Uri.parse(UrlLinks.fbProjectDataURL);
 
-  List<ProjectModel> _projects;
+  List<ProjectModel>? _projects;
 
-  List<ProjectModel> getProjects() {
+  List<ProjectModel>? getProjects() {
     return _projects;
   }
 
   ProjectModel getProject( index ){
-    return _projects[ index ];
+    return _projects![ index ];
   }
 
   Future<void> fetchAndSetProjects() async {

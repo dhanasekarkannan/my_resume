@@ -10,10 +10,10 @@ import '../model/work_model.dart';
 class WorkProvider with ChangeNotifier {
   static Uri url = Uri.parse(UrlLinks.fbWorkDataURL);
 
-  List<WorkModel> _works;
+  List<WorkModel>? _works;
 
   List<WorkModel> get getWorks {
-    return [..._works];
+    return [..._works!];
   }
 
   Future<void> fetchAndSetWorks() async {

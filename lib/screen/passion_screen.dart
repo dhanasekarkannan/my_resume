@@ -10,7 +10,7 @@ class PassionScreen extends StatefulWidget with NavigationStates {
 }
 
 class _PassionScreenState extends State<PassionScreen> {
-  int touchedIndex;
+  int? touchedIndex;
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +49,7 @@ class _PassionScreenState extends State<PassionScreen> {
                           ),
                           sectionsSpace: 0,
                           centerSpaceRadius: 40,
-                          sections: showingSections()),
+                          sections: showingSections() as List<PieChartSectionData>?),
                     ),
                   ),
                 ),
@@ -103,7 +103,7 @@ class _PassionScreenState extends State<PassionScreen> {
     );
   }
 
-  List<PieChartSectionData> showingSections() {
+  List<PieChartSectionData?> showingSections() {
     return List.generate(4, (i) {
       final isTouched = i == touchedIndex;
       final double fontSize = isTouched ? 25 : 16;

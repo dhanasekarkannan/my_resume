@@ -5,12 +5,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CustomDialDialogWidget extends StatelessWidget {
   final String title, description, buttonText;
-  final Image image;
+  final Image? image;
 
   CustomDialDialogWidget({
-    @required this.title,
-    @required this.description,
-    @required this.buttonText,
+    required this.title,
+    required this.description,
+    required this.buttonText,
     this.image,
   });
 
@@ -105,7 +105,7 @@ class CustomDialDialogWidget extends StatelessWidget {
               SizedBox(height: 10.0),
               Align(
                 alignment: Alignment.bottomRight,
-                child: FlatButton(
+                child: TextButton(
                   onPressed: () {
                     Navigator.of(context).pop(); // To close the dialog
                   },
