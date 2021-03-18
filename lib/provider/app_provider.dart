@@ -1,3 +1,4 @@
+import 'dart:collection';
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
@@ -11,7 +12,7 @@ import 'dart:io' show Platform;
 class AppProvider with ChangeNotifier {
   static Uri url = Uri.parse(UrlLinks.fbAppDataURL);
 
-  List<AppModel> _appData;
+  UnmodifiableListView<AppModel> _appData;
 
   List<AppModel> getAppListData() {
     return _appData;
@@ -66,23 +67,26 @@ class AppProvider with ChangeNotifier {
 
   Future<void> fetchAndSetAppData() async {
     try {
-      final response =
-          await http.get(url).timeout(Duration(seconds: Constants.timeoutSec));
-      final extractedData = jsonDecode(response.body) as Map<String, dynamic>;
-      final List<AppModel> loadedData = [];
-      extractedData.forEach((appPlatform, appData) {
-        loadedData.add(
-          AppModel(
-              appPlatform: appPlatform,
-              appURL: appData["appURL"],
-              version: appData["version"],
-              priority: appData["priority"],
-              updateMsg: appData["updateMsg"]),
-        );
-      });
+      if (_appData.isEmpty) {
+        final response = await http
+            .get(url)
+            .timeout(Duration(seconds: Constants.timeoutSec));
+        final extractedData = jsonDecode(response.body) as Map<String, dynamic>;
+        final List<AppModel> loadedData = [];
+        extractedData.forEach((appPlatform, appData) {
+          loadedData.add(
+            AppModel(
+                appPlatform: appPlatform,
+                appURL: appData["appURL"],
+                version: appData["version"],
+                priority: appData["priority"],
+                updateMsg: appData["updateMsg"]),
+          );
+        });
 
-      _appData = loadedData;
-      notifyListeners();
+        _appData = loadedData;
+        notifyListeners();
+      }
     } catch (error) {
       print('error $error');
       throw (error);

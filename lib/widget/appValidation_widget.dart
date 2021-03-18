@@ -8,7 +8,7 @@ class AppValidationWidget extends StatelessWidget {
         title: Text('Alert'),
         content: Text("Please update App"),
         actions: <Widget>[
-          RaisedButton(child: Text('OK') , onPressed: (){},),
+          ElevatedButton(child: Text('OK') , onPressed: (){},),
         ],
       ),
     );

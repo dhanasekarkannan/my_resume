@@ -20,7 +20,7 @@ dependencies:
   flutter:
     sdk: flutter
   provider: ^5.0.0-nullsafety.5
-  flutter_bloc: ^6.1.0
+  flutter_bloc: ^7.0.0
   font_awesome_flutter: ^9.0.0-nullsafety
   url_launcher: ^6.0.2
   google_maps_flutter: ^2.0.1

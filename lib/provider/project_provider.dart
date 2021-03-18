@@ -21,6 +21,7 @@ class ProjectProvider with ChangeNotifier {
 
   Future<void> fetchAndSetProjects() async {
     try {
+      if(_projects.isEmpty){
       final response = await http.get(url);
       final extractedData = jsonDecode(response.body) as List;
       final List<ProjectModel> loadedData = [];
@@ -39,6 +40,7 @@ class ProjectProvider with ChangeNotifier {
 
       _projects = loadedData;
       notifyListeners();
+      }
     } catch (error) {
       throw (error);
     }

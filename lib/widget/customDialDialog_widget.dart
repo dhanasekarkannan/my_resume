@@ -105,7 +105,7 @@ class CustomDialDialogWidget extends StatelessWidget {
               SizedBox(height: 10.0),
               Align(
                 alignment: Alignment.bottomRight,
-                child: FlatButton(
+                child: TextButton(
                   onPressed: () {
                     Navigator.of(context).pop(); // To close the dialog
                   },

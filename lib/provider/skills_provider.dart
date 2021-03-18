@@ -29,21 +29,23 @@ class SkillsProvider with ChangeNotifier {
 
   Future<void> fetchAndSetSkills() async {
     try {
-      final response = await http.get(url);
-      final extractedData = jsonDecode(response.body) as List;
-      final List<SkillsModel> loadedData = [];
-      extractedData.forEach((workData) {
-        loadedData.add(
-          SkillsModel(
-              skillId: workData["skillId"],
-              skillPercnt: workData["skillPercnt"],
-              skillTitle: workData["skillTitle"],
-              skillKey: workData["skillKey"]),
-        );
-      });
+      if (_skills.isEmpty) {
+        final response = await http.get(url);
+        final extractedData = jsonDecode(response.body) as List;
+        final List<SkillsModel> loadedData = [];
+        extractedData.forEach((workData) {
+          loadedData.add(
+            SkillsModel(
+                skillId: workData["skillId"],
+                skillPercnt: workData["skillPercnt"],
+                skillTitle: workData["skillTitle"],
+                skillKey: workData["skillKey"]),
+          );
+        });
 
-      _skills = loadedData;
-      notifyListeners();
+        _skills = loadedData;
+        notifyListeners();
+      }
     } catch (error) {
       throw (error);
     }
