@@ -1,3 +1,4 @@
+import 'dart:collection';
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
@@ -9,15 +10,13 @@ import '../model/work_model.dart';
 class WorkProvider with ChangeNotifier {
   static Uri url = Uri.parse(UrlLinks.fbWorkDataURL);
 
-  List<WorkModel> _works;
+  List<WorkModel> _works = [];
 
-  List<WorkModel> get getWorks {
-    return [..._works];
-  }
+  UnmodifiableListView<WorkModel> get getWorks => UnmodifiableListView(_works);
 
   Future<void> fetchAndSetWorks() async {
     try {
-      if (_works.isEmpty) {
+      if (getWorks.isEmpty) {
         final response = await http.get(url);
         final extractedData = jsonDecode(response.body) as List;
         final List<WorkModel> loadedData = [];

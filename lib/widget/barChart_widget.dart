@@ -131,7 +131,7 @@ class BarChartWidgetState extends State<BarChartWidget> {
   }
 
   List<BarChartGroupData> showingGroups() =>
-      List.generate(widget._skills.getSkills().length, (i) {
+      List.generate(widget._skills.getSkills.length, (i) {
         return makeGroupData(i, widget._skills.getSkillPercentDouble(i),
             isTouched: i == touchedIndex);
       });
@@ -208,7 +208,7 @@ class BarChartWidgetState extends State<BarChartWidget> {
       borderData: FlBorderData(
         show: false,
       ),
-      barGroups: List.generate(widget._skills.getSkills().length, (i) {
+      barGroups: List.generate(widget._skills.getSkills.length, (i) {
         return makeGroupData(i, Random().nextInt(10).toDouble(),
             barColor: widget.availableColors[
                 Random().nextInt(widget.availableColors.length)]);

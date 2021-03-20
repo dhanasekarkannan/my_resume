@@ -11,13 +11,11 @@ class PersonalProvider with ChangeNotifier {
 
   PersonalModel _personalData;
 
-  PersonalModel getAppData() {
-    return _personalData;
-  }
+  PersonalModel get getAppData => _personalData;
 
   Future<void> fetchAndSetPersonalData() async {
     try {
-      if (_personalData == null) {
+      if (getAppData == null) {
         final response = await http
             .get(url)
             .timeout(Duration(seconds: Constants.timeoutSec));

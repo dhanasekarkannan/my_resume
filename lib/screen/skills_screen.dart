@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import '../bloc/sidebar_navigation_bloc.dart';
 
 class SkillsScreen extends StatelessWidget with NavigationStates {
-   final List<SkillsModel> _skillList = SkillsProvider().getSkills();
+   final List<SkillsModel> _skillList = SkillsProvider().getSkills;
 
   @override
   Widget build(BuildContext context) {

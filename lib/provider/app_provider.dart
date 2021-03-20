@@ -12,24 +12,20 @@ import 'dart:io' show Platform;
 class AppProvider with ChangeNotifier {
   static Uri url = Uri.parse(UrlLinks.fbAppDataURL);
 
-  UnmodifiableListView<AppModel> _appData;
+  List<AppModel> _appData = [];
 
-  List<AppModel> getAppListData() {
-    return _appData;
-  }
+  UnmodifiableListView<AppModel> get getAppListData =>
+      UnmodifiableListView(_appData);
 
   AppModel getAppData() {
     try {
       if (Platform.isAndroid) {
-        return getAppListData()
-            .singleWhere((data) => data.appPlatform == 'android');
+        return getAppListData.singleWhere((data) => data.appPlatform == 'android');
       } else {
-        return getAppListData()
-            .singleWhere((data) => data.appPlatform == 'iOS');
+        return getAppListData.singleWhere((data) => data.appPlatform == 'iOS');
       }
     } catch (e) {
-      return getAppListData()
-          .singleWhere((data) => data.appPlatform == 'android');
+      return getAppListData.singleWhere((data) => data.appPlatform == 'android');
     }
   }
 
@@ -50,8 +46,7 @@ class AppProvider with ChangeNotifier {
       if (Platform.isAndroid) {
         print("web test inside");
 
-        final appData = getAppListData()
-            .singleWhere((data) => data.appPlatform == 'android');
+        final appData = getAppListData.singleWhere((data) => data.appPlatform == 'android');
         PackageInfo _packageInfo = await _getPackageInfo();
         print("App version from server: ${appData.version}");
         print("Package version from server: ${_packageInfo.version}");
@@ -67,7 +62,7 @@ class AppProvider with ChangeNotifier {
 
   Future<void> fetchAndSetAppData() async {
     try {
-      if (_appData.isEmpty) {
+      if (getAppListData.isEmpty) {
         final response = await http
             .get(url)
             .timeout(Duration(seconds: Constants.timeoutSec));
@@ -86,6 +81,9 @@ class AppProvider with ChangeNotifier {
 
         _appData = loadedData;
         notifyListeners();
+      }
+      else{
+        print("$getAppListData");
       }
     } catch (error) {
       print('error $error');

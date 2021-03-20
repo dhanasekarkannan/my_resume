@@ -1,11 +1,11 @@
 import 'package:dhana_resume/screen/appValidation_screen.dart';
 import 'package:dhana_resume/screen/initial_screen.dart';
-import './provider/app_provider.dart';
+import 'provider/app_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 
-import './bloc/sidebar_navigation_bloc.dart';
+import 'bloc/sidebar_navigation_bloc.dart';
 
 void main() => runApp(MyApp());
 

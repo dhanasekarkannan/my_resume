@@ -1,3 +1,4 @@
+import 'dart:collection';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -11,25 +12,23 @@ class SkillsProvider with ChangeNotifier {
 
   List<SkillsModel> _skills = [];
 
-  List<SkillsModel> getSkills() {
-    return _skills;
-  }
+  UnmodifiableListView<SkillsModel> get getSkills => UnmodifiableListView(_skills);
 
   String getSkillKey(int index) {
-    return _skills[index].skillKey;
+    return getSkills[index].skillKey;
   }
 
   String getSkillTitle(int index) {
-    return _skills[index].skillTitle;
+    return getSkills[index].skillTitle;
   }
 
   double getSkillPercentDouble(int index) {
-    return double.parse(_skills[index].skillPercnt);
+    return double.parse(getSkills[index].skillPercnt);
   }
 
   Future<void> fetchAndSetSkills() async {
     try {
-      if (_skills.isEmpty) {
+      if (getSkills.isEmpty) {
         final response = await http.get(url);
         final extractedData = jsonDecode(response.body) as List;
         final List<SkillsModel> loadedData = [];
