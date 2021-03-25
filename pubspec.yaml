@@ -26,7 +26,7 @@ dependencies:
   google_maps_flutter: ^2.0.1
   fl_chart: ^0.20.1
   firebase_core: ^1.0.0 
-  firebase_messaging: ^9.0.0
+  firebase_messaging: ^9.0.1
   package_info: ^2.0.0
   http: ^0.13.0
   rxdart: ^0.26.0
