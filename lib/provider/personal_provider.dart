@@ -11,25 +11,28 @@ class PersonalProvider with ChangeNotifier {
 
   PersonalModel? _personalData;
 
-  PersonalModel? getAppData() {
-    return _personalData;
-  }
+  PersonalModel get getAppData => _personalData;
 
   Future<void> fetchAndSetPersonalData() async {
     try {
-      final response =
-          await http.get(url).timeout(Duration(seconds: Constants.timeoutSec));
-      final extractedData = json.jsonDecode(response.body) as Map<String, dynamic>;
-      PersonalModel loadedData;
+      if (getAppData == null) {
+        final response = await http
+            .get(url)
+            .timeout(Duration(seconds: Constants.timeoutSec));
+        final extractedData = json.jsonDecode(response.body) as Map<String, dynamic>;
+        PersonalModel loadedData;
 
-      loadedData = PersonalModel(
-        reps: extractedData["items"][0]["reputation"].toString(),
-        bronze: extractedData["items"][0]["badge_counts"]["bronze"].toString(),
-        silver: extractedData["items"][0]["badge_counts"]["silver"].toString(),
-        gold: extractedData["items"][0]["badge_counts"]["gold"].toString(),
-      );
-      _personalData = loadedData;
-      notifyListeners();
+        loadedData = PersonalModel(
+          reps: extractedData["items"][0]["reputation"].toString(),
+          bronze:
+              extractedData["items"][0]["badge_counts"]["bronze"].toString(),
+          silver:
+              extractedData["items"][0]["badge_counts"]["silver"].toString(),
+          gold: extractedData["items"][0]["badge_counts"]["gold"].toString(),
+        );
+        _personalData = loadedData;
+        notifyListeners();
+      }
     } catch (error) {
       print('error $error');
       throw (error);

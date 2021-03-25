@@ -1,3 +1,4 @@
+import 'dart:collection';
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
@@ -11,24 +12,20 @@ import 'dart:io' show Platform;
 class AppProvider with ChangeNotifier {
   static Uri url = Uri.parse(UrlLinks.fbAppDataURL);
 
-  List<AppModel>? _appData;
+  List<AppModel> _appData = [];
 
-  List<AppModel>? getAppListData() {
-    return _appData;
-  }
+  UnmodifiableListView<AppModel> get getAppListData =>
+      UnmodifiableListView(_appData);
 
   AppModel getAppData() {
     try {
       if (Platform.isAndroid) {
-        return getAppListData()!
-            .singleWhere((data) => data.appPlatform == 'android');
+        return getAppListData.singleWhere((data) => data.appPlatform == 'android');
       } else {
-        return getAppListData()!
-            .singleWhere((data) => data.appPlatform == 'iOS');
+        return getAppListData.singleWhere((data) => data.appPlatform == 'iOS');
       }
     } catch (e) {
-      return getAppListData()!
-          .singleWhere((data) => data.appPlatform == 'android');
+      return getAppListData.singleWhere((data) => data.appPlatform == 'android');
     }
   }
 
@@ -49,8 +46,7 @@ class AppProvider with ChangeNotifier {
       if (Platform.isAndroid) {
         print("web test inside");
 
-        final appData = getAppListData()!
-            .singleWhere((data) => data.appPlatform == 'android');
+        final appData = getAppListData.singleWhere((data) => data.appPlatform == 'android');
         PackageInfo _packageInfo = await _getPackageInfo();
         print("App version from server: ${appData.version}");
         print("Package version from server: ${_packageInfo.version}");
@@ -66,23 +62,29 @@ class AppProvider with ChangeNotifier {
 
   Future<void> fetchAndSetAppData() async {
     try {
-      final response =
-          await http.get(url).timeout(Duration(seconds: Constants.timeoutSec));
-      final extractedData = jsonDecode(response.body) as Map<String, dynamic>;
-      final List<AppModel> loadedData = [];
-      extractedData.forEach((appPlatform, appData) {
-        loadedData.add(
-          AppModel(
-              appPlatform: appPlatform,
-              appURL: appData["appURL"],
-              version: appData["version"],
-              priority: appData["priority"],
-              updateMsg: appData["updateMsg"]),
-        );
-      });
+      if (getAppListData.isEmpty) {
+        final response = await http
+            .get(url)
+            .timeout(Duration(seconds: Constants.timeoutSec));
+        final extractedData = jsonDecode(response.body) as Map<String, dynamic>;
+        final List<AppModel> loadedData = [];
+        extractedData.forEach((appPlatform, appData) {
+          loadedData.add(
+            AppModel(
+                appPlatform: appPlatform,
+                appURL: appData["appURL"],
+                version: appData["version"],
+                priority: appData["priority"],
+                updateMsg: appData["updateMsg"]),
+          );
+        });
 
-      _appData = loadedData;
-      notifyListeners();
+        _appData = loadedData;
+        notifyListeners();
+      }
+      else{
+        print("$getAppListData");
+      }
     } catch (error) {
       print('error $error');
       throw (error);
