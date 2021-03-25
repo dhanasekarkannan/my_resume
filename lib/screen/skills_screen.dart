@@ -29,9 +29,9 @@ class SkillsScreen extends StatelessWidget with NavigationStates {
                             ],
                           )
                         : null,
-                    title: Text(_skillList[index].skillTitle!),
+                    title: Text(_skillList[index].skillTitle),
                     subtitle:
-                        Text(_skillList[index].skillPercnt!),
+                        Text(_skillList[index].skillPercnt),
                     trailing: index % 2 != 0
                         ? Icon(
                             Icons.ac_unit,

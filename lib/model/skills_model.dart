@@ -1,9 +1,9 @@
 
 class SkillsModel {
-  final String? skillId;
-  final String? skillTitle;
-  final String? skillPercnt;
-  final String? skillKey;
+  final String skillId;
+  final String skillTitle;
+  final String skillPercnt;
+  final String  skillKey;
 
   SkillsModel({
     required this.skillId,

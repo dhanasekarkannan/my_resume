@@ -144,7 +144,7 @@ class BarChartWidgetState extends State<BarChartWidget> {
             getTooltipItem: (group, groupIndex, rod, rodIndex) {
               String? title;
               title = widget._skills.getSkillTitle(group.x.toInt());
-              return BarTooltipItem(title! + '\n' + (rod.y - 1).toString(),
+              return BarTooltipItem(title + '\n' + (rod.y - 1).toString(),
                   TextStyle(color: Colors.yellow));
             }),
         touchCallback: (barTouchResponse) {
@@ -169,7 +169,7 @@ class BarChartWidgetState extends State<BarChartWidget> {
           },
           margin: 16,
           getTitles: (double value) {
-            return widget._skills.getSkillKey(value.toInt())!;
+            return widget._skills.getSkillKey(value.toInt());
           },
         ),
         leftTitles: SideTitles(
@@ -198,7 +198,7 @@ class BarChartWidgetState extends State<BarChartWidget> {
           },
           margin: 16,
           getTitles: (double value) {
-            return widget._skills.getSkillKey(value.toInt())!;
+            return widget._skills.getSkillKey(value.toInt());
           },
         ),
         leftTitles:  SideTitles(

@@ -60,22 +60,14 @@ class HomeWelcomeWidget extends StatelessWidget {
                   ),
                 ),
                 TextSpan(
-<<<<<<< HEAD
-                  text: " ${personalStack.getAppData()!.reps}  ",
-=======
-                  text: " ${personalStack.getAppData.reps}  ",
->>>>>>> mobile
+                  text: " ${personalStack.getAppData!.reps}  ",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 15,
                     color: Colors.grey[350],
                   ),
                 ),
-<<<<<<< HEAD
-                int.parse(personalStack.getAppData()!.gold) > 0
-=======
-                int.parse(personalStack.getAppData.gold) > 0
->>>>>>> mobile
+                int.parse(personalStack.getAppData!.gold) > 0
                     ? WidgetSpan(
                         child: Icon(
                           FontAwesomeIcons.solidCircle,
@@ -84,15 +76,9 @@ class HomeWelcomeWidget extends StatelessWidget {
                         ),
                       )
                     : TextSpan(),
-<<<<<<< HEAD
-                int.parse(personalStack.getAppData()!.gold) > 0
+                int.parse(personalStack.getAppData!.gold) > 0
                     ? TextSpan(
-                        text: " ${personalStack.getAppData()!.gold}   ",
-=======
-                int.parse(personalStack.getAppData.gold) > 0
-                    ? TextSpan(
-                        text: " ${personalStack.getAppData.gold}   ",
->>>>>>> mobile
+                        text: " ${personalStack.getAppData!.gold}   ",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 15,
@@ -108,11 +94,7 @@ class HomeWelcomeWidget extends StatelessWidget {
                   ),
                 ),
                 TextSpan(
-<<<<<<< HEAD
-                  text: " ${personalStack.getAppData()!.silver}   ",
-=======
-                  text: " ${personalStack.getAppData.silver}   ",
->>>>>>> mobile
+                  text: " ${personalStack.getAppData!.silver}   ",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 15,
@@ -127,7 +109,7 @@ class HomeWelcomeWidget extends StatelessWidget {
                   ),
                 ),
                 TextSpan(
-                  text: " ${personalStack.getAppData.bronze} ",
+                  text: " ${personalStack.getAppData!.bronze} ",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 15,

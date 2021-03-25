@@ -9,9 +9,9 @@ import '../utils/utils.dart';
 class PersonalProvider with ChangeNotifier {
   static Uri url = Uri.parse(UrlLinks.stackOverflowURL);
   
-  PersonalModel _personalData = PersonalModel();
+  PersonalModel? _personalData ;
 
-  PersonalModel get getAppData => _personalData;
+  PersonalModel? get getAppData => _personalData;
 
   Future<void> fetchAndSetPersonalData() async {
     try {
@@ -33,7 +33,8 @@ class PersonalProvider with ChangeNotifier {
         _personalData = loadedData;
         notifyListeners();
       
-    } catch (error) {
+    }
+    }catch (error) {
       print('error $error');
       throw (error);
     }
