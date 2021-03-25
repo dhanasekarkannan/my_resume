@@ -8,8 +8,8 @@ import '../utils/utils.dart';
 
 class PersonalProvider with ChangeNotifier {
   static Uri url = Uri.parse(UrlLinks.stackOverflowURL);
-
-  PersonalModel? _personalData;
+  
+  PersonalModel _personalData = PersonalModel();
 
   PersonalModel get getAppData => _personalData;
 
@@ -32,7 +32,7 @@ class PersonalProvider with ChangeNotifier {
         );
         _personalData = loadedData;
         notifyListeners();
-      }
+      
     } catch (error) {
       print('error $error');
       throw (error);
