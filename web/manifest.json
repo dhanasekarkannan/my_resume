@@ -2,10 +2,10 @@
     "name": "dhana_resume",
     "short_name": "dhana_resume",
     "start_url": ".",
-    "display": "standalone",
+    "display": "fullscreen",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Dhanasekar Kannan Resume",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
