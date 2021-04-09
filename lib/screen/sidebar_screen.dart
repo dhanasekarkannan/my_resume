@@ -15,10 +15,10 @@ class SidebarScreen extends StatefulWidget {
 
 class _SidebarScreenState extends State<SidebarScreen>
     with SingleTickerProviderStateMixin<SidebarScreen> {
-  AnimationController _animationController;
-  StreamController<bool> isSidebarOpenedStreamController;
-  Stream<bool> isSidebarOpenedStream;
-  StreamSink<bool> isSidebarOpenedSink;
+  late AnimationController _animationController;
+  late StreamController<bool> isSidebarOpenedStreamController;
+  Stream<bool>? isSidebarOpenedStream;
+  late StreamSink<bool> isSidebarOpenedSink;
   final _animationDuration = const Duration(milliseconds: 500);
 
   void onIconPressed() {
@@ -63,8 +63,8 @@ class _SidebarScreenState extends State<SidebarScreen>
             duration: _animationDuration,
             top: 0,
             bottom: 0,
-            left: isSidebarOpenedAsync.data ? 0 : -screenWidth,
-            right: isSidebarOpenedAsync.data ? 0 : screenWidth - 45,
+            left: isSidebarOpenedAsync.data! ? 0 : -screenWidth,
+            right: isSidebarOpenedAsync.data! ? 0 : screenWidth - 45,
             child: Row(
               children: <Widget>[
                 Expanded(

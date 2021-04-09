@@ -1,13 +1,21 @@
 import 'package:dhana_resume/screen/appValidation_screen.dart';
 import 'package:dhana_resume/screen/initial_screen.dart';
-import './provider/app_provider.dart';
+import 'package:dhana_resume/utils/utils.dart';
+import 'package:firebase_analytics/observer.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'provider/app_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 
-import './bloc/sidebar_navigation_bloc.dart';
+import 'bloc/sidebar_navigation_bloc.dart';
 
-void main() => runApp(MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
+}
 
 class MyApp extends StatefulWidget {
   // This widget is the root of your application.
@@ -16,6 +24,9 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  static FirebaseAnalytics analytics = FirebaseAnalytics();
+  static FirebaseAnalyticsObserver observer =
+      FirebaseAnalyticsObserver(analytics: analytics);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -24,29 +35,48 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: ValidationPage(),
+      navigatorObservers: <NavigatorObserver>[observer],
+      home: ValidationPage(
+        analytics: analytics,
+        observer: observer,
+      ),
     );
   }
 }
 
 class ValidationPage extends StatefulWidget {
+  final FirebaseAnalytics? analytics;
+  final FirebaseAnalyticsObserver? observer;
+
+  const ValidationPage({Key? key, this.analytics, this.observer})
+      : super(key: key);
   @override
   _ValidationPageState createState() => _ValidationPageState();
 }
 
 class _ValidationPageState extends State<ValidationPage> {
   @override
+  void initState()  {
+    Utils().logScreen(widget.analytics, "Validation Page");
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => AppProvider()),
       ],
-      child: MyHomePage(),
+      child: MyHomePage( analytics: widget.analytics, observer: widget.observer, ),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
+  final FirebaseAnalytics? analytics;
+  final FirebaseAnalyticsObserver? observer;
+
+  MyHomePage({required this.analytics, required this.observer});
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -57,9 +87,12 @@ class _MyHomePageState extends State<MyHomePage> {
   bool _isLoading = true;
 
   @override
-  void initState() {
+  void initState(){
+    Utils().logScreen(widget.analytics, "My Home Page");
     super.initState();
   }
+
+  
 
   @override
   void didChangeDependencies() {
@@ -120,7 +153,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       }
 
                       return snapshot.data != 0
-                          ? AppValidationScreen(appProvider.getAppData())
+                          ? AppValidationScreen(appData: appProvider.getAppData(), analytics: widget.analytics, observer: widget.observer,)
                           : InitialScreen();
                       // ...
                     });

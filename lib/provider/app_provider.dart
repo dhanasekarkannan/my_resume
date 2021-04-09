@@ -1,3 +1,4 @@
+import 'dart:collection';
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
@@ -9,62 +10,79 @@ import '../utils/utils.dart';
 import 'dart:io' show Platform;
 
 class AppProvider with ChangeNotifier {
-  static const url = UrlLinks.fbAppDataURL;
+  static Uri url = Uri.parse(UrlLinks.fbAppDataURL);
 
-  List<AppModel> _appData;
+  List<AppModel> _appData = [];
 
-  List<AppModel> getAppListData() {
-    return _appData;
-  }
+  UnmodifiableListView<AppModel> get getAppListData =>
+      UnmodifiableListView(_appData);
 
   AppModel getAppData() {
-    if (Platform.isAndroid) {
-      return getAppListData()
+    try {
+      if (Platform.isAndroid) {
+        return getAppListData
+            .singleWhere((data) => data.appPlatform == 'android');
+      } else {
+        return getAppListData.singleWhere((data) => data.appPlatform == 'iOS');
+      }
+    } catch (e) {
+      return getAppListData
           .singleWhere((data) => data.appPlatform == 'android');
-    } else {
-      return getAppListData().singleWhere((data) => data.appPlatform == 'iOS');
     }
   }
 
   Future<PackageInfo> _getPackageInfo() async {
+    print("bfr package info ");
     final PackageInfo info = await PackageInfo.fromPlatform();
+    print("after package info");
+
     return info;
   }
 
   Future<int> getVersionVaildation() async {
+
     int key = 0;
-    if (Platform.isAndroid) {
-      final appData =
-          getAppListData().singleWhere((data) => data.appPlatform == 'android');
-      PackageInfo _packageInfo = await _getPackageInfo();
-      print("App version from server: ${appData.version}");
-      print("Package version from server: ${_packageInfo.version}");
-      if (appData.version != _packageInfo.version) {
-        key = int.parse(appData.priority);
+    try {
+      if (Platform.isAndroid) {
+        final appData =
+            getAppListData.singleWhere((data) => data.appPlatform == 'android');
+        PackageInfo _packageInfo = await _getPackageInfo();
+        print("App version from server: ${appData.version}");
+        print("Package version from server: ${_packageInfo.version}");
+        if (appData.version != _packageInfo.version) {
+          key = int.parse(appData.priority!);
+        }
       }
+    } catch (e) {
+      return key;
     }
     return key;
   }
 
   Future<void> fetchAndSetAppData() async {
     try {
-      final response =
-          await http.get(url).timeout(Duration(seconds: Constants.timeoutSec));
-      final extractedData = jsonDecode(response.body) as Map<String, dynamic>;
-      final List<AppModel> loadedData = [];
-      extractedData.forEach((appPlatform, appData) {
-        loadedData.add(
-          AppModel(
-              appPlatform: appPlatform,
-              appURL: appData["appURL"],
-              version: appData["version"],
-              priority: appData["priority"],
-              updateMsg: appData["updateMsg"]),
-        );
-      });
+      if (getAppListData.isEmpty) {
+        final response = await http
+            .get(url)
+            .timeout(Duration(seconds: Constants.timeoutSec));
+        final extractedData = jsonDecode(response.body) as Map<String, dynamic>;
+        final List<AppModel> loadedData = [];
+        extractedData.forEach((appPlatform, appData) {
+          loadedData.add(
+            AppModel(
+                appPlatform: appPlatform,
+                appURL: appData["appURL"],
+                version: appData["version"],
+                priority: appData["priority"],
+                updateMsg: appData["updateMsg"]),
+          );
+        });
 
-      _appData = loadedData;
-      notifyListeners();
+        _appData = loadedData;
+        notifyListeners();
+      } else {
+        print("$getAppListData");
+      }
     } catch (error) {
       print('error $error');
       throw (error);

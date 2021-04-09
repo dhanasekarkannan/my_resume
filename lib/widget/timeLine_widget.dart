@@ -3,11 +3,10 @@ import 'package:flutter/material.dart';
 
 import 'package:dhana_resume/model/work_model.dart';
 
-
 class TimeLineWidget extends StatelessWidget {
   final List<WorkModel> workSet;
 
-  TimeLineWidget({@required this.workSet});
+  TimeLineWidget({required this.workSet});
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +27,10 @@ class TimeLineWidget extends StatelessWidget {
                   child: Container(
                     color: Colors.white70,
                     child: ListTile(
-                      contentPadding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                      contentPadding:
+                          EdgeInsets.symmetric(vertical: 20, horizontal: 10),
                       title: Text(
-                        workSet[index].workName,
+                        workSet[index].workName!,
                         style: TextStyle(
                           fontWeight: FontWeight.w700,
                           fontSize: 17,
@@ -38,7 +38,7 @@ class TimeLineWidget extends StatelessWidget {
                         ),
                       ),
                       trailing: Image.network(
-                        workSet[index].workLogoUrl,
+                        workSet[index].workLogoUrl!,
                         semanticLabel: workSet[index].workName,
                         fit: BoxFit.contain,
                         height: 100,
@@ -48,7 +48,7 @@ class TimeLineWidget extends StatelessWidget {
                         text: TextSpan(
                           children: <TextSpan>[
                             TextSpan(
-                              text: workSet[index].workDesg + '\n', 
+                              text: workSet[index].workDesg! + '\n',
                               style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: 12,
@@ -56,10 +56,9 @@ class TimeLineWidget extends StatelessWidget {
                               ),
                             ),
                             TextSpan(
-                              text: 
-                                  workSet[index].workStart +
+                              text: workSet[index].workStart! +
                                   ' - ' +
-                                  workSet[index].workEnd,
+                                  workSet[index].workEnd!,
                               style: TextStyle(
                                 fontWeight: FontWeight.w400,
                                 fontSize: 12,
@@ -84,21 +83,25 @@ class TimeLineWidget extends StatelessWidget {
                 color: Colors.white,
               ),
             ),
-            index == workSet.length -1 ? Positioned(
-              top: 0.0,
-              left: 31.0,
-              child: Container(
-                decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.white),
-                height: 10,
-                width: 10,
-                // color: Colors.white,
-              ),
-            ) : Container(),
+            index == workSet.length - 1
+                ? Positioned(
+                    top: 0.0,
+                    left: 31.0,
+                    child: Container(
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle, color: Colors.white),
+                      height: 10,
+                      width: 10,
+                      // color: Colors.white,
+                    ),
+                  )
+                : Container(),
             Positioned(
               top: 60.0,
               left: 26.0,
               child: Container(
-                decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.white),
+                decoration:
+                    BoxDecoration(shape: BoxShape.circle, color: Colors.white),
                 height: 20,
                 width: 20,
                 // color: Colors.white,

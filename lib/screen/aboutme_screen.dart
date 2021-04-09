@@ -1,3 +1,6 @@
+import 'package:dhana_resume/utils/utils.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -8,6 +11,10 @@ import '../utils/textStrings.dart';
 
 
 class AboutMeScreen extends StatefulWidget with NavigationStates {
+  final String routeName = 'AboutMeScreen';
+  // final FirebaseAnalytics? analytics;
+  // final FirebaseAnalyticsObserver? observer;
+  // AboutMeScreen({required this.analytics, required this.observer});
   @override
   _AboutMeScreenState createState() => _AboutMeScreenState();
 }
@@ -18,6 +25,7 @@ class _AboutMeScreenState extends State<AboutMeScreen> {
 
   @override
   void initState() {
+    // Utils().logScreen(widget.analytics, widget.routeName);
     super.initState();
   }
 

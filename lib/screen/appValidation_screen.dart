@@ -1,21 +1,40 @@
 import 'package:dhana_resume/model/app_model.dart';
 import 'package:dhana_resume/screen/initial_screen.dart';
 import 'package:dhana_resume/utils/utils.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/material.dart';
 
-class AppValidationScreen extends StatelessWidget {
-  final AppModel _appData;
-  AppValidationScreen(this._appData);
+class AppValidationScreen extends StatefulWidget {
+    final String routeName = '/AppValidationScreen';
+
+  final FirebaseAnalytics? analytics;
+  final FirebaseAnalyticsObserver? observer;
+  final AppModel appData;
+  AppValidationScreen({required this.appData, required this.analytics, required this.observer});
+
+  @override
+  _AppValidationScreenState createState() => _AppValidationScreenState();
+}
+
+class _AppValidationScreenState extends State<AppValidationScreen> {
+
+  @override
+  void initState() {
+    Utils().logScreen(widget.analytics, widget.routeName);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        height: double.infinity,
+        height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            tileMode: TileMode.repeated,
+            // tileMode: TileMode.repeated,
             colors: [
               const Color(0xFF262AAA),
               const Color(0xFFE65258),
@@ -30,7 +49,7 @@ class AppValidationScreen extends StatelessWidget {
                   padding: EdgeInsets.all(20),
                   child: 
                   Text(
-                    _appData.updateMsg,
+                    widget.appData.updateMsg!,
                     style: TextStyle(color: Colors.amber),
                   ),
                 ),
@@ -39,12 +58,12 @@ class AppValidationScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(20.0),
               child: Row(
-                mainAxisAlignment: _appData.priority == "2"
+                mainAxisAlignment: widget.appData.priority == "2"
                     ? MainAxisAlignment.spaceAround
                     : MainAxisAlignment.center,
                 children: <Widget>[
-                  _appData.priority == "2"
-                      ? RaisedButton(
+                  widget.appData.priority == "2"
+                      ? ElevatedButton(
                           child: Text("Remind Later"),
                           onPressed: () {
                             Navigator.push(
@@ -56,7 +75,7 @@ class AppValidationScreen extends StatelessWidget {
                           },
                         )
                       : Container(),
-                  RaisedButton(
+                  ElevatedButton(
                     child: Text("Update Now"),
                     onPressed: () {
                       Utils().launchURL(UrlLinks.playStoreURL);

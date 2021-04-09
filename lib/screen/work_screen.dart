@@ -91,7 +91,7 @@ class _WorkScreenState extends State<WorkScreen> {
                       itemExtent: 100,
                       children: <Widget>[
                         for (ProjectModel project
-                            in projects.getProjects().reversed)
+                            in projects.getProjects.reversed)
                           ProjectWidget(project),
                       ],
                     );
