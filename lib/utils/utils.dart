@@ -1,3 +1,4 @@
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import './textStrings.dart';
@@ -53,4 +54,9 @@ class Utils {
       throw 'Could not launch $url';
     }
   }
+
+  Future<void> logScreen(FirebaseAnalytics? analytics, String screenName) async{
+    await analytics?.setCurrentScreen(screenName: screenName);
+  } 
+
 }

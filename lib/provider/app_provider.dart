@@ -20,12 +20,14 @@ class AppProvider with ChangeNotifier {
   AppModel getAppData() {
     try {
       if (Platform.isAndroid) {
-        return getAppListData.singleWhere((data) => data.appPlatform == 'android');
+        return getAppListData
+            .singleWhere((data) => data.appPlatform == 'android');
       } else {
         return getAppListData.singleWhere((data) => data.appPlatform == 'iOS');
       }
     } catch (e) {
-      return getAppListData.singleWhere((data) => data.appPlatform == 'android');
+      return getAppListData
+          .singleWhere((data) => data.appPlatform == 'android');
     }
   }
 
@@ -38,15 +40,12 @@ class AppProvider with ChangeNotifier {
   }
 
   Future<int> getVersionVaildation() async {
-    print("web test inside");
 
     int key = 0;
     try {
-      print("web test inside");
       if (Platform.isAndroid) {
-        print("web test inside");
-
-        final appData = getAppListData.singleWhere((data) => data.appPlatform == 'android');
+        final appData =
+            getAppListData.singleWhere((data) => data.appPlatform == 'android');
         PackageInfo _packageInfo = await _getPackageInfo();
         print("App version from server: ${appData.version}");
         print("Package version from server: ${_packageInfo.version}");
@@ -81,8 +80,7 @@ class AppProvider with ChangeNotifier {
 
         _appData = loadedData;
         notifyListeners();
-      }
-      else{
+      } else {
         print("$getAppListData");
       }
     } catch (error) {

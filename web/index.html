@@ -33,6 +33,7 @@
        application. For more information, see:
        https://developers.google.com/web/fundamentals/primers/service-workers -->
   <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-analytics.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-messaging.js"></script>
   <script>
     // Your web app's Firebase configuration
@@ -47,6 +48,8 @@
     appId: "1:223924439264:web:60a0986be3af98cdf7a885"
   };
     firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+
 
   </script>
   <script>
