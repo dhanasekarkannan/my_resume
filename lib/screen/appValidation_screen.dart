@@ -1,3 +1,4 @@
+import 'package:dhana_resume/model/appConfig_model.dart';
 import 'package:dhana_resume/model/app_model.dart';
 import 'package:dhana_resume/screen/initial_screen.dart';
 import 'package:dhana_resume/utils/utils.dart';
@@ -10,7 +11,7 @@ class AppValidationScreen extends StatefulWidget {
 
   final FirebaseAnalytics? analytics;
   final FirebaseAnalyticsObserver? observer;
-  final AppModel appData;
+  final AppConfigModel appData;
   AppValidationScreen({required this.appData, required this.analytics, required this.observer});
 
   @override
@@ -49,7 +50,7 @@ class _AppValidationScreenState extends State<AppValidationScreen> {
                   padding: EdgeInsets.all(20),
                   child: 
                   Text(
-                    widget.appData.updateMsg!,
+                    widget.appData.updateMsg,
                     style: TextStyle(color: Colors.amber),
                   ),
                 ),

@@ -1,6 +1,7 @@
 import 'dart:collection';
 import 'dart:convert';
 
+import 'package:dhana_resume/model/appConfig_model.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/foundation.dart';
 import 'package:package_info/package_info.dart';
@@ -12,45 +13,38 @@ import 'dart:io' show Platform;
 class AppProvider with ChangeNotifier {
   static Uri url = Uri.parse(UrlLinks.fbAppDataURL);
 
-  List<AppModel> _appData = [];
+  AppModel? _appData;
+  AppModel? get getAppListData => _appData;
 
-  UnmodifiableListView<AppModel> get getAppListData =>
-      UnmodifiableListView(_appData);
-
-  AppModel getAppData() {
+  AppConfigModel getAppData() {
     try {
       if (Platform.isAndroid) {
-        return getAppListData
-            .singleWhere((data) => data.appPlatform == 'android');
+        return getAppListData!.android;
       } else {
-        return getAppListData.singleWhere((data) => data.appPlatform == 'iOS');
+        return getAppListData!.android;
+
+        // return getAppListData.ios;
       }
     } catch (e) {
-      return getAppListData
-          .singleWhere((data) => data.appPlatform == 'android');
+      return getAppListData!.android;
     }
   }
 
   Future<PackageInfo> _getPackageInfo() async {
-    print("bfr package info ");
     final PackageInfo info = await PackageInfo.fromPlatform();
-    print("after package info");
-
     return info;
   }
 
   Future<int> getVersionVaildation() async {
-
     int key = 0;
     try {
       if (Platform.isAndroid) {
-        final appData =
-            getAppListData.singleWhere((data) => data.appPlatform == 'android');
+        final appData = getAppListData!.android;
         PackageInfo _packageInfo = await _getPackageInfo();
         print("App version from server: ${appData.version}");
         print("Package version from server: ${_packageInfo.version}");
         if (appData.version != _packageInfo.version) {
-          key = int.parse(appData.priority!);
+          key = int.parse(appData.priority);
         }
       }
     } catch (e) {
@@ -61,30 +55,14 @@ class AppProvider with ChangeNotifier {
 
   Future<void> fetchAndSetAppData() async {
     try {
-      if (getAppListData.isEmpty) {
-        final response = await http
-            .get(url)
-            .timeout(Duration(seconds: Constants.timeoutSec));
-        final extractedData = jsonDecode(response.body) as Map<String, dynamic>;
-        final List<AppModel> loadedData = [];
-        extractedData.forEach((appPlatform, appData) {
-          loadedData.add(
-            AppModel(
-                appPlatform: appPlatform,
-                appURL: appData["appURL"],
-                version: appData["version"],
-                priority: appData["priority"],
-                updateMsg: appData["updateMsg"]),
-          );
-        });
+      final response =
+          await http.get(url).timeout(Duration(seconds: Constants.timeoutSec));
+      final AppModel? appModel = AppModel.fromJson(response.body);
 
-        _appData = loadedData;
-        notifyListeners();
-      } else {
-        print("$getAppListData");
-      }
+      _appData = appModel as AppModel;
+      notifyListeners();
     } catch (error) {
-      print('error $error');
+      print('error $url $error');
       throw (error);
     }
   }
