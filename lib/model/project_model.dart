@@ -1,20 +1,44 @@
+library project_model;
 
-class ProjectModel {
-  final String? projId;
-  final String? projName;
-  final String? projClient;
-  final String? projUrl;
-  final String? projImgUrl;
-  final String? projDesc;
+import 'dart:convert';
 
-  ProjectModel({
-    required this.projId,
-    required this.projName,
-    required this.projClient,
-    required this.projDesc,
-    this.projUrl =
-        'https://media-exp1.licdn.com/dms/image/C4E0BAQEe2Z_nU4IpEA/company-logo_200_200/0?e=1593648000&v=beta&t=94BlohLfLJPvAD3iGDW54N273nY5Vpqu0ZjdztU5kJI',
-    this.projImgUrl =
-        'https://media-exp1.licdn.com/dms/image/C4E0BAQEe2Z_nU4IpEA/company-logo_200_200/0?e=1593648000&v=beta&t=94BlohLfLJPvAD3iGDW54N273nY5Vpqu0ZjdztU5kJI',
-  });
+import 'package:built_collection/built_collection.dart';
+import 'package:built_value/built_value.dart';
+import 'package:built_value/serializer.dart';
+
+import 'serializers.dart';
+
+part 'project_model.g.dart';
+
+abstract class ProjectModel
+    implements Built<ProjectModel, ProjectModelBuilder> {
+  ProjectModel._();
+
+  factory ProjectModel([updates(ProjectModelBuilder b)]) = _$ProjectModel;
+
+  @BuiltValueField(wireName: 'projClient')
+  String get projClient;
+  @BuiltValueField(wireName: 'projDesc')
+  String get projDesc;
+  @BuiltValueField(wireName: 'projId')
+  String get projId;
+  @BuiltValueField(wireName: 'projImgUrl')
+  String get projImgUrl;
+  @BuiltValueField(wireName: 'projName')
+  String get projName;
+  @BuiltValueField(wireName: 'projUrl')
+  String get projUrl;
+  String toJson() {
+    return json
+        .encode(serializers.serializeWith(ProjectModel.serializer, this));
+  }
+
+  static ProjectModel? fromJson(String jsonString) {
+    return serializers.deserializeWith(
+        ProjectModel.serializer, json.decode(jsonString));
+  }
+
+  static Serializer<ProjectModel> get serializer => _$projectModelSerializer;
 }
+
+

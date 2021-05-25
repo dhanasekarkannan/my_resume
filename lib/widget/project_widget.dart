@@ -20,18 +20,18 @@ class ProjectWidget extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(10),
         child: Container(
-          color: colors[int.parse(_project.projId!) % colors.length],
+          color: colors[int.parse(_project.projId) % colors.length],
           child: Center(
             child: ListTile(
               title: Text(
-                _project.projName!,
+                _project.projName,
                 style:
                     TextStyle(color: Colors.white, fontWeight: FontWeight.w900),
               ),
               subtitle: RichText(
                   text: TextSpan(children: [
                 TextSpan(
-                  text: _project.projClient! + '\n',
+                  text: _project.projClient + '\n',
                   style: TextStyle(
                       fontWeight: FontWeight.w600, color: Colors.black54),
                 ),
@@ -43,7 +43,7 @@ class ProjectWidget extends StatelessWidget {
                 ),
               ])),
               trailing: Image.network(
-                _project.projImgUrl!,
+                _project.projImgUrl,
                 semanticLabel: _project.projUrl,
                 fit: BoxFit.contain,
                 height: 100,

@@ -30,7 +30,7 @@ class TimeLineWidget extends StatelessWidget {
                       contentPadding:
                           EdgeInsets.symmetric(vertical: 20, horizontal: 10),
                       title: Text(
-                        workSet[index].workName!,
+                        workSet[index].workName,
                         style: TextStyle(
                           fontWeight: FontWeight.w700,
                           fontSize: 17,
@@ -48,7 +48,7 @@ class TimeLineWidget extends StatelessWidget {
                         text: TextSpan(
                           children: <TextSpan>[
                             TextSpan(
-                              text: workSet[index].workDesg! + '\n',
+                              text: workSet[index].workDesg + '\n',
                               style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: 12,
@@ -56,9 +56,9 @@ class TimeLineWidget extends StatelessWidget {
                               ),
                             ),
                             TextSpan(
-                              text: workSet[index].workStart! +
+                              text: workSet[index].workStart +
                                   ' - ' +
-                                  workSet[index].workEnd!,
+                                  workSet[index].workEnd,
                               style: TextStyle(
                                 fontWeight: FontWeight.w400,
                                 fontSize: 12,

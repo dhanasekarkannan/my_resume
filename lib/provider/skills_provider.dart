@@ -12,7 +12,8 @@ class SkillsProvider with ChangeNotifier {
 
   List<SkillsModel> _skills = [];
 
-  UnmodifiableListView<SkillsModel> get getSkills => UnmodifiableListView(_skills);
+  UnmodifiableListView<SkillsModel> get getSkills =>
+      UnmodifiableListView(_skills);
 
   String getSkillKey(int index) {
     return getSkills[index].skillKey;
@@ -32,14 +33,8 @@ class SkillsProvider with ChangeNotifier {
         final response = await http.get(url);
         final extractedData = jsonDecode(response.body) as List;
         final List<SkillsModel> loadedData = [];
-        extractedData.forEach((workData) {
-          loadedData.add(
-            SkillsModel(
-                skillId: workData["skillId"],
-                skillPercnt: workData["skillPercnt"],
-                skillTitle: workData["skillTitle"],
-                skillKey: workData["skillKey"]),
-          );
+        extractedData.forEach((skillData) {
+          loadedData.add(SkillsModel.fromJson(jsonEncode(skillData))!);
         });
 
         _skills = loadedData;

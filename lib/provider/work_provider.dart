@@ -21,16 +21,7 @@ class WorkProvider with ChangeNotifier {
         final extractedData = jsonDecode(response.body) as List;
         final List<WorkModel> loadedData = [];
         extractedData.forEach((workData) {
-          loadedData.add(
-            WorkModel(
-                workId: workData["workId"],
-                workName: workData["workName"],
-                workDesg: workData["workDesg"],
-                workStart: workData["workStart"],
-                workEnd: workData["workEnd"],
-                workLoc: workData["workLoc"],
-                workLogoUrl: workData["workLogoUrl"]),
-          );
+          loadedData.add(WorkModel.fromJson(jsonEncode(workData))!);
         });
 
         _works = loadedData;

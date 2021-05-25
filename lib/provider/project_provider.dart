@@ -13,7 +13,8 @@ class ProjectProvider with ChangeNotifier {
 
   List<ProjectModel> _projects = [];
 
-  UnmodifiableListView<ProjectModel> get getProjects => UnmodifiableListView(_projects);
+  UnmodifiableListView<ProjectModel> get getProjects =>
+      UnmodifiableListView(_projects);
 
   ProjectModel getProject(index) {
     return getProjects[index];
@@ -27,14 +28,7 @@ class ProjectProvider with ChangeNotifier {
         final List<ProjectModel> loadedData = [];
         extractedData.forEach((projData) {
           loadedData.add(
-            ProjectModel(
-              projId: projData["projId"],
-              projName: projData["projName"],
-              projClient: projData["projClient"],
-              projDesc: projData["projDesc"],
-              projImgUrl: projData["projImgUrl"],
-              projUrl: projData["projUrl"],
-            ),
+            ProjectModel.fromJson(jsonEncode(projData))!,
           );
         });
 
