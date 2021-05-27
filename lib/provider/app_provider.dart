@@ -1,18 +1,19 @@
-import 'dart:collection';
 import 'dart:convert';
 
 import 'package:dhana_resume/model/appConfig_model.dart';
+import 'package:dhana_resume/model/resumeException_model.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/foundation.dart';
 import 'package:package_info/package_info.dart';
+import '../helper/service_helper.dart';
 
 import '../model/app_model.dart';
 import '../utils/utils.dart';
-import 'dart:io' show Platform;
+import 'dart:io' show HttpException, Platform, SocketException;
 
 class AppProvider with ChangeNotifier {
   static Uri url = Uri.parse(UrlLinks.fbAppDataURL);
-
+  ServiceHelper service = ServiceHelper();
   AppModel? _appData;
   AppModel? get getAppListData => _appData;
 
@@ -55,15 +56,16 @@ class AppProvider with ChangeNotifier {
 
   Future<void> fetchAndSetAppData() async {
     try {
-      final response =
-          await http.get(url).timeout(Duration(seconds: Constants.timeoutSec));
-      final AppModel? appModel = AppModel.fromJson(response.body);
+      String response = await service.getServiceRequest(url);
 
+      final AppModel? appModel = AppModel.fromJson(jsonDecode(response));
       _appData = appModel as AppModel;
       notifyListeners();
-    } catch (error) {
-      print('error $url $error');
-      throw (error);
+    } on ResumeException catch (e) {
+      throw e;
+    } catch (e) {
+      throw ResumeException(
+          errorCode: "21", errorMessage: "Error in fetching Application Data ");
     }
   }
 }

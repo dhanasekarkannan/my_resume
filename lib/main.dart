@@ -1,3 +1,4 @@
+import 'package:dhana_resume/model/resumeException_model.dart';
 import 'package:dhana_resume/screen/appValidation_screen.dart';
 import 'package:dhana_resume/screen/initial_screen.dart';
 import 'package:dhana_resume/utils/utils.dart';
@@ -109,14 +110,14 @@ class _MyHomePageState extends State<MyHomePage> {
             _isLoading = false;
           });
         }).catchError((e) {
-          _showAlert(context, e);
+          _showAlert(context, e.errorMessage!);
         });
       }
     }
     super.didChangeDependencies();
   }
 
-  void _showAlert(BuildContext context, dynamic description) {
+  void _showAlert(BuildContext context, String description) {
     showDialog(
         context: context,
         barrierDismissible: false,
