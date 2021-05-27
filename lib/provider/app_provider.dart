@@ -58,7 +58,7 @@ class AppProvider with ChangeNotifier {
     try {
       String response = await service.getServiceRequest(url);
 
-      final AppModel? appModel = AppModel.fromJson(jsonDecode(response));
+      final AppModel? appModel = AppModel.fromJson(response);
       _appData = appModel as AppModel;
       notifyListeners();
     } on ResumeException catch (e) {

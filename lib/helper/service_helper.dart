@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:dhana_resume/model/resumeException_model.dart';
+import 'package:dhana_resume/utils/utils.dart';
 import 'package:http/http.dart';
 
 class ServiceHelper {
@@ -22,8 +23,8 @@ class ServiceHelper {
   Future<String> getServiceRequest(Uri url,
       {Map<String, String>? headers}) async {
     try {
-      final Response response = await get(url);
-      return jsonEncode(response.body);
+      final Response response = await get(url).timeout(Duration(seconds: Constants.timeoutSec));
+      return response.body;
     } on HttpException {
       throw ResumeException(
           errorMessage: "Http Exception - Please check Network Connectivity");
