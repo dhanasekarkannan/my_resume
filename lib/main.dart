@@ -56,7 +56,7 @@ class ValidationPage extends StatefulWidget {
 
 class _ValidationPageState extends State<ValidationPage> {
   @override
-  void initState()  {
+  void initState() {
     Utils().logScreen(widget.analytics, "Validation Page");
     super.initState();
   }
@@ -67,7 +67,10 @@ class _ValidationPageState extends State<ValidationPage> {
       providers: [
         ChangeNotifierProvider(create: (_) => AppProvider()),
       ],
-      child: MyHomePage( analytics: widget.analytics, observer: widget.observer, ),
+      child: MyHomePage(
+        analytics: widget.analytics,
+        observer: widget.observer,
+      ),
     );
   }
 }
@@ -87,12 +90,10 @@ class _MyHomePageState extends State<MyHomePage> {
   bool _isLoading = true;
 
   @override
-  void initState(){
+  void initState() {
     Utils().logScreen(widget.analytics, "My Home Page");
     super.initState();
   }
-
-  
 
   @override
   void didChangeDependencies() {
@@ -153,9 +154,12 @@ class _MyHomePageState extends State<MyHomePage> {
                       }
 
                       return snapshot.data != 0
-                          ? AppValidationScreen(appData: appProvider.getAppData(), analytics: widget.analytics, observer: widget.observer,)
+                          ? AppValidationScreen(
+                              appData: appProvider.getAppData(),
+                              analytics: widget.analytics,
+                              observer: widget.observer,
+                            )
                           : InitialScreen();
-                      // ...
                     });
               }),
       ),
