@@ -1,6 +1,7 @@
 import 'dart:collection';
 import 'dart:convert';
 
+import 'package:built_value/serializer.dart';
 import 'package:dhana_resume/helper/service_helper.dart';
 import 'package:dhana_resume/model/resumeException_model.dart';
 import 'package:flutter/foundation.dart';
@@ -20,7 +21,7 @@ class WorkProvider with ChangeNotifier {
     try {
       if (getWorks.isEmpty) {
         final String response = await service.getServiceRequest(url);
-        final  extractedData = jsonDecode(response) as List;
+        final extractedData = jsonDecode(response) as List;
         final List<WorkModel> loadedData = [];
         extractedData.forEach((workData) {
           loadedData.add(WorkModel.fromJson(jsonEncode(workData))!);
@@ -29,10 +30,14 @@ class WorkProvider with ChangeNotifier {
         _works = loadedData;
         notifyListeners();
       }
+    }on DeserializationError {
+      throw ResumeException(
+          errorCode: "21", errorMessage: "Error in Deserializing Work Data ");
     } on ResumeException catch (e) {
       throw e;
     } catch (error) {
-      throw (error);
+      throw ResumeException(
+          errorCode: "21", errorMessage: "Error in fetching Work Data ");
     }
   }
 }

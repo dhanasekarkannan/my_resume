@@ -1,5 +1,4 @@
 import 'package:dhana_resume/model/appConfig_model.dart';
-import 'package:dhana_resume/model/app_model.dart';
 import 'package:dhana_resume/screen/initial_screen.dart';
 import 'package:dhana_resume/utils/utils.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';

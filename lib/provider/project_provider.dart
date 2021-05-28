@@ -1,10 +1,10 @@
 import 'dart:collection';
 
+import 'package:built_value/serializer.dart';
 import 'package:dhana_resume/helper/service_helper.dart';
 import 'package:dhana_resume/model/resumeException_model.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
-
 
 import '../model/project_model.dart';
 import '../utils/utils.dart';
@@ -36,10 +36,15 @@ class ProjectProvider with ChangeNotifier {
         _projects = loadedData;
         notifyListeners();
       }
-    } on ResumeException catch(e){
+    } on ResumeException catch (e) {
       throw e;
+    } on DeserializationError {
+      throw ResumeException(
+          errorCode: "21",
+          errorMessage: "Error in Deserializing Project Data ");
     } catch (error) {
-      throw (error);
+      throw ResumeException(
+          errorCode: "21", errorMessage: "Error in fetching Project Data ");
     }
   }
 }

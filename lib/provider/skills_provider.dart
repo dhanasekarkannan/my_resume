@@ -1,6 +1,7 @@
 import 'dart:collection';
 import 'dart:convert';
 
+import 'package:built_value/serializer.dart';
 import 'package:dhana_resume/helper/service_helper.dart';
 import 'package:dhana_resume/model/resumeException_model.dart';
 import 'package:flutter/material.dart';
@@ -44,8 +45,12 @@ class SkillsProvider with ChangeNotifier {
       }
     } on ResumeException catch (e) {
       throw e;
+    }on DeserializationError {
+      throw ResumeException(
+          errorCode: "21", errorMessage: "Error in Deserializing Skills Data ");
     } catch (error) {
-      throw (error);
+      throw ResumeException(
+          errorCode: "21", errorMessage: "Error in fetching Skills Data ");
     }
   }
 }

@@ -1,15 +1,13 @@
-import 'dart:convert';
-
+import 'package:built_value/serializer.dart';
 import 'package:dhana_resume/model/appConfig_model.dart';
 import 'package:dhana_resume/model/resumeException_model.dart';
-import 'package:http/http.dart' as http;
 import 'package:flutter/foundation.dart';
 import 'package:package_info/package_info.dart';
 import '../helper/service_helper.dart';
 
 import '../model/app_model.dart';
 import '../utils/utils.dart';
-import 'dart:io' show HttpException, Platform, SocketException;
+import 'dart:io' show Platform;
 
 class AppProvider with ChangeNotifier {
   static Uri url = Uri.parse(UrlLinks.fbAppDataURL);
@@ -23,7 +21,6 @@ class AppProvider with ChangeNotifier {
         return getAppListData!.android;
       } else {
         return getAppListData!.android;
-
         // return getAppListData.ios;
       }
     } catch (e) {
@@ -57,12 +54,15 @@ class AppProvider with ChangeNotifier {
   Future<void> fetchAndSetAppData() async {
     try {
       String response = await service.getServiceRequest(url);
-
       final AppModel? appModel = AppModel.fromJson(response);
       _appData = appModel as AppModel;
       notifyListeners();
     } on ResumeException catch (e) {
       throw e;
+    } on DeserializationError {
+      throw ResumeException(
+          errorCode: "21",
+          errorMessage: "Error in Deserializing Application Data ");
     } catch (e) {
       throw ResumeException(
           errorCode: "21", errorMessage: "Error in fetching Application Data ");

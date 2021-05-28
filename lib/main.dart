@@ -1,4 +1,3 @@
-import 'package:dhana_resume/model/resumeException_model.dart';
 import 'package:dhana_resume/screen/appValidation_screen.dart';
 import 'package:dhana_resume/screen/initial_screen.dart';
 import 'package:dhana_resume/utils/utils.dart';
