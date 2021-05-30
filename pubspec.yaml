@@ -13,7 +13,6 @@ dependencies:
   flutter_bloc: ^7.0.0
   font_awesome_flutter: ^9.0.0-nullsafety
   url_launcher: ^6.0.2
-  google_maps_flutter: ^2.0.1
   fl_chart: ^0.20.1
   firebase_core: ^1.0.0 
   firebase_messaging: ^9.0.1
